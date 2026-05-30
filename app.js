@@ -864,6 +864,34 @@ function hideLoader() {
     }
 }
 
+async function detectLanguageByIP() {
+    let country = '';
+    try {
+        const response = await fetch('https://freeipapi.com/api/json');
+        const data = await response.json();
+        country = data?.countryCode;
+    } catch (e) {
+        try {
+            const response = await fetch('https://ipapi.co/json/');
+            const data = await response.json();
+            country = data?.country_code;
+        } catch (err) {
+            console.error('IP Geolocation failed:', err);
+        }
+    }
+
+    if (country) {
+        const countryCode = country.toUpperCase();
+        let detectedLang = 'en';
+        if (['UZ', 'TJ', 'KG', 'KZ'].includes(countryCode)) {
+            detectedLang = 'uz';
+        } else if (countryCode === 'RU') {
+            detectedLang = 'ru';
+        }
+        window.setLang(detectedLang);
+    }
+}
+
 function startApp() {
     applyTranslations();
     initLanguageMenus();
@@ -874,6 +902,10 @@ function startApp() {
     setupTeamCarousel();
     initStickerShowcase();
     autoRotateLoop();
+
+    if (!localStorage.getItem('salesnews_lang')) {
+        detectLanguageByIP();
+    }
 
     if (document.readyState === 'complete') {
         setTimeout(hideLoader, 1000);
