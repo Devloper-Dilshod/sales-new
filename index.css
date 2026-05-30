@@ -20,13 +20,13 @@
     --text-dark-muted: #40514d; 
     --text-dark-light: #6f817b; 
     --shadow-soft: rgba(44, 57, 48, 0.07);
-    --page-bg:
-        radial-gradient(circle at 16% 8%, rgba(221, 246, 231, 0.72) 0%, transparent 30%),
-        radial-gradient(circle at 82% 18%, rgba(227, 241, 249, 0.7) 0%, transparent 28%),
-        radial-gradient(circle at 45% 100%, rgba(255, 245, 218, 0.62) 0%, transparent 34%),
-        linear-gradient(135deg, #fbfaf6 0%, #f4f7f0 48%, #eef6f6 100%);
-    --header-bg: rgba(251, 250, 246, 0.88);
-    --nav-bg: rgba(251, 250, 246, 0.94);
+    --page-bg: linear-gradient(145deg, #f7f4ec 0%, #f4f6ef 42%, #edf4f4 100%);
+    --ambient-overlay:
+        linear-gradient(120deg, rgba(0, 200, 83, 0.055), transparent 34%, rgba(0, 136, 204, 0.045) 68%, rgba(255, 179, 0, 0.045)),
+        repeating-linear-gradient(90deg, rgba(20, 32, 29, 0.026) 0 1px, transparent 1px 64px),
+        repeating-linear-gradient(0deg, rgba(20, 32, 29, 0.022) 0 1px, transparent 1px 64px);
+    --header-bg: rgba(247, 244, 236, 0.88);
+    --nav-bg: rgba(247, 244, 236, 0.94);
     --theme-icon: "\f186";
 }
 
@@ -39,6 +39,17 @@ body {
     margin: 0;
     padding: 0;
     transition: background 0.35s ease, color 0.35s ease;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: var(--ambient-overlay);
+    opacity: 0.68;
+    mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
 }
 
 body[data-theme="dark"] {
@@ -58,6 +69,10 @@ body[data-theme="dark"] {
     --text-dark-light: #8fa29c;
     --shadow-soft: rgba(0, 0, 0, 0.22);
     --page-bg: linear-gradient(135deg, #10191f 0%, #13231f 48%, #14202b 100%);
+    --ambient-overlay:
+        linear-gradient(120deg, rgba(69, 216, 138, 0.06), transparent 36%, rgba(100, 185, 232, 0.05) 68%, rgba(184, 144, 244, 0.045)),
+        repeating-linear-gradient(90deg, rgba(228, 236, 232, 0.028) 0 1px, transparent 1px 64px),
+        repeating-linear-gradient(0deg, rgba(228, 236, 232, 0.024) 0 1px, transparent 1px 64px);
     --header-bg: rgba(19, 28, 34, 0.88);
     --nav-bg: rgba(18, 27, 33, 0.95);
     --theme-icon: "\f185";
@@ -903,13 +918,7 @@ tg-emoji {
 }
 
 .mesh-container {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-    opacity: 0.42;
-    filter: blur(96px);
+    display: none;
 }
 
 .mesh-blob {
