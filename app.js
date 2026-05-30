@@ -1,6 +1,3 @@
-
-import '@lottiefiles/lottie-player';
-
 const translations = {
     uz: {
         page_title: "SalesNews.uz - Telegram Premium, Stars, TON NFT va garant xizmatlar",
@@ -377,6 +374,8 @@ function initThemeToggle() {
 function optimizeMotionForMobile() {
     if (!shouldUseReducedMotion()) return;
 
+    document.body.classList.add('performance-mode');
+
     window.setTimeout(() => {
         document.querySelectorAll('lottie-player').forEach((player, index) => {
             player.setAttribute('speed', '0.6');
@@ -507,7 +506,19 @@ let radius = 230;
 let activePointerId = null;
 
 function shouldUseReducedMotion() {
-    return window.innerWidth < 768 || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    return document.body.dataset.performance === 'low'
+        || window.innerWidth < 768
+        || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+async function initLottieRuntime() {
+    if (shouldUseReducedMotion()) return;
+
+    try {
+        await import('@lottiefiles/lottie-player');
+    } catch (error) {
+        console.error('Lottie player failed to load:', error);
+    }
 }
 
 function getCarouselStep() {
@@ -831,7 +842,7 @@ function initNavigation() {
 
         updateMobileIndicator();
 
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: shouldUseReducedMotion() ? 'auto' : 'smooth' });
 
         if (pageId === 'team-page') {
             setTimeout(setupTeamCarousel, 100);
@@ -1018,6 +1029,13 @@ function animateLoaderProgress(onComplete) {
         return;
     }
 
+    if (shouldUseReducedMotion()) {
+        loaderText.textContent = '100%';
+        progressBar.style.width = '100%';
+        setTimeout(onComplete, 120);
+        return;
+    }
+
     let progress = 0;
     const duration = 1500; // 1.5 seconds loading time
     const intervalTime = 30; // update every 30ms
@@ -1041,7 +1059,8 @@ function animateLoaderProgress(onComplete) {
     }, intervalTime);
 }
 
-function startApp() {
+async function startApp() {
+    await initLottieRuntime();
     initThemeToggle();
     applyTranslations();
     initLanguageMenus();

@@ -52,6 +52,33 @@ body::before {
     mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
 }
 
+.static-logo {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+body[data-performance="low"]::before {
+    display: none;
+}
+
+body[data-performance="low"] .static-logo {
+    display: block;
+}
+
+body[data-performance="low"] lottie-player {
+    display: none !important;
+}
+
+body[data-performance="low"] .glass-panel,
+body[data-performance="low"] .desktop-header,
+body[data-performance="low"] .mobile-bottom-nav,
+body[data-performance="low"] .lang-menu {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
 body[data-theme="dark"] {
     --bg-white-clean: #131c22;
     --bg-light-soft: #172229;
@@ -1281,6 +1308,10 @@ lottie-player {
 }
 
 @media (max-width: 767px) {
+    body::before {
+        display: none !important;
+    }
+
     .mesh-container,
     #particles-container {
         display: none !important;
@@ -1312,8 +1343,13 @@ lottie-player {
     .carousel-card,
     .premium-emoji,
     .premium-emoji.lottie-emoji-badge,
-    .btn-premium {
+    .btn-premium,
+    .desktop-header,
+    .mobile-bottom-nav,
+    .lang-menu {
         transition-duration: 0.15s !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
     }
 
     .carousel-card:not(.active) {
