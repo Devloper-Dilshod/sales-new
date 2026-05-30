@@ -1,0 +1,20 @@
+{
+  "name": "salesnews-uz",
+  "version": "1.0.0",
+  "description": "SalesNews.uz - Premium Telegram-Style Web Application",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y vite",
+    "build": "npx -y vite build",
+    "preview": "npx -y vite preview"
+  },
+  "keywords": [
+    "telegram",
+    "salesnews",
+    "getgems",
+    "ton",
+    "premium"
+  ],
+  "author": "SalesNews Team",
+  "license": "ISC"
+}
