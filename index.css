@@ -158,8 +158,17 @@ body {
 .owner-role-badge {
     color: #8b5cf6;
     background: #ffffff;
-    border: 1px solid rgba(43, 208, 113, 0.55);
-    box-shadow: 0 0 8px rgba(43, 208, 113, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.6);
+    box-shadow: 0 0 8px rgba(139, 92, 246, 0.12);
+}
+
+.carousel-card.owner-card {
+    border-color: rgba(139, 92, 246, 0.6);
+}
+
+.carousel-card.owner-card.active {
+    border-color: rgba(139, 92, 246, 0.88);
+    box-shadow: 0 15px 30px -5px rgba(139, 92, 246, 0.14);
 }
 
 .carousel-card:not(.active) {
