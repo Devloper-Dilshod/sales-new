@@ -223,6 +223,12 @@ const productDataByLang = {
 let activeLang = localStorage.getItem('salesnews_lang') || 'uz';
 let currentProductCategory = 'premium';
 
+const languageOptions = {
+    uz: { short: 'UZ', label: "O'zbek", flag: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 36 24%22%3E%3Cpath fill=%22%231eb6e8%22 d=%22M0 0h36v8H0z%22/%3E%3Cpath fill=%22%23fff%22 d=%22M0 8h36v8H0z%22/%3E%3Cpath fill=%22%2325b34b%22 d=%22M0 16h36v8H0z%22/%3E%3Cpath fill=%22%23ce1126%22 d=%22M0 7h36v1H0zM0 16h36v1H0z%22/%3E%3Ccircle cx=%226%22 cy=%224%22 r=%222.4%22 fill=%22%23fff%22/%3E%3Ccircle cx=%227%22 cy=%224%22 r=%222.4%22 fill=%22%231eb6e8%22/%3E%3Cg fill=%22%23fff%22%3E%3Ccircle cx=%2212%22 cy=%222%22 r=%22.45%22/%3E%3Ccircle cx=%2215%22 cy=%222%22 r=%22.45%22/%3E%3Ccircle cx=%2218%22 cy=%222%22 r=%22.45%22/%3E%3Ccircle cx=%2212%22 cy=%224%22 r=%22.45%22/%3E%3Ccircle cx=%2215%22 cy=%224%22 r=%22.45%22/%3E%3Ccircle cx=%2218%22 cy=%224%22 r=%22.45%22/%3E%3Ccircle cx=%2212%22 cy=%226%22 r=%22.45%22/%3E%3Ccircle cx=%2215%22 cy=%226%22 r=%22.45%22/%3E%3Ccircle cx=%2218%22 cy=%226%22 r=%22.45%22/%3E%3C/g%3E%3C/svg%3E' },
+    ru: { short: 'RU', label: 'Русский', flag: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 36 24%22%3E%3Cpath fill=%22%23fff%22 d=%22M0 0h36v8H0z%22/%3E%3Cpath fill=%22%230039a6%22 d=%22M0 8h36v8H0z%22/%3E%3Cpath fill=%22%23d52b1e%22 d=%22M0 16h36v8H0z%22/%3E%3C/svg%3E' },
+    en: { short: 'EN', label: 'English', flag: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 36 24%22%3E%3Cpath fill=%22%23012169%22 d=%22M0 0h36v24H0z%22/%3E%3Cpath stroke=%22%23fff%22 stroke-width=%225%22 d=%22m0 0 36 24M36 0 0 24%22/%3E%3Cpath stroke=%22%23C8102E%22 stroke-width=%223%22 d=%22m0 0 36 24M36 0 0 24%22/%3E%3Cpath stroke=%22%23fff%22 stroke-width=%228%22 d=%22M18 0v24M0 12h36%22/%3E%3Cpath stroke=%22%23C8102E%22 stroke-width=%225%22 d=%22M18 0v24M0 12h36%22/%3E%3C/svg%3E' }
+};
+
 function t(key) {
     return translations[activeLang]?.[key] || translations.uz[key] || key;
 }
@@ -248,8 +254,28 @@ function applyTranslations() {
         btn.classList.toggle('lang-active-m', isActive && btn.classList.contains('lang-btn-m'));
     });
 
-    document.querySelectorAll('#lang-select, #lang-select-m').forEach((select) => {
-        select.value = activeLang;
+    document.querySelectorAll('[data-lang-menu]').forEach((menu) => {
+        const activeOption = languageOptions[activeLang] || languageOptions.uz;
+        const trigger = menu.querySelector('[data-lang-trigger]');
+        const isCompact = trigger?.classList.contains('compact-trigger');
+        if (trigger) {
+            trigger.innerHTML = `
+                <img class="flag-img" src="${activeOption.flag}" alt="">
+                <span>${isCompact ? activeOption.short : activeOption.label}</span>
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            `;
+        }
+
+        menu.querySelectorAll('[data-lang-option]').forEach((option) => {
+            const lang = option.getAttribute('data-lang-option');
+            const flagImg = option.querySelector('[data-flag]');
+            if (flagImg && languageOptions[lang]) {
+                flagImg.src = languageOptions[lang].flag;
+            }
+            const isSelected = lang === activeLang;
+            option.classList.toggle('selected', isSelected);
+            option.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+        });
     });
 }
 
@@ -261,6 +287,37 @@ window.setLang = function setLang(lang) {
     renderProducts(currentProductCategory);
     setupTeamCarousel();
 };
+
+function initLanguageMenus() {
+    document.querySelectorAll('[data-lang-menu]').forEach((menu) => {
+        const trigger = menu.querySelector('[data-lang-trigger]');
+        if (!trigger || menu.dataset.initialized === 'true') return;
+
+        trigger.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const isOpen = menu.classList.toggle('open');
+            trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        menu.querySelectorAll('[data-lang-option]').forEach((option) => {
+            option.addEventListener('click', (event) => {
+                event.stopPropagation();
+                window.setLang(option.getAttribute('data-lang-option'));
+                menu.classList.remove('open');
+                trigger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        menu.dataset.initialized = 'true';
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('[data-lang-menu].open').forEach((menu) => {
+            menu.classList.remove('open');
+            menu.querySelector('[data-lang-trigger]')?.setAttribute('aria-expanded', 'false');
+        });
+    });
+}
 
 function initUptimeCounter() {
     const startDate = new Date('2025-06-18T00:00:00+05:00');
@@ -804,6 +861,7 @@ function hideLoader() {
 
 function startApp() {
     applyTranslations();
+    initLanguageMenus();
     initUptimeCounter();
     createBackgroundParticles();
     initNavigation();

@@ -118,13 +118,20 @@
                 <i class="fas fa-user-shield"></i> <span data-i18n="nav_team">Jamoa / Adminlar</span>
             </button>
         </nav>
-        <div class="language-switcher flex items-center gap-2 ml-4" aria-label="Til tanlash">
+        <div class="language-switcher custom-lang flex items-center gap-2 ml-4" data-lang-menu aria-label="Til tanlash">
             <span class="language-dot" aria-hidden="true">🌐</span>
-            <select id="lang-select" class="lang-select" onchange="setLang(this.value)" title="Tilni tanlash">
-                <option value="uz">🇺🇿 O'zbek</option>
-                <option value="ru">🇷🇺 Русский</option>
-                <option value="en">🇬🇧 English</option>
-            </select>
+            <button type="button" class="lang-trigger" data-lang-trigger aria-haspopup="listbox" aria-expanded="false" title="Tilni tanlash"></button>
+            <div class="lang-menu" data-lang-options role="listbox">
+                <button type="button" class="lang-option" data-lang-option="uz" role="option">
+                    <img class="flag-img" data-flag="uz" alt=""> <span>O'zbek</span>
+                </button>
+                <button type="button" class="lang-option" data-lang-option="ru" role="option">
+                    <img class="flag-img" data-flag="ru" alt=""> <span>Русский</span>
+                </button>
+                <button type="button" class="lang-option" data-lang-option="en" role="option">
+                    <img class="flag-img" data-flag="en" alt=""> <span>English</span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -171,12 +178,19 @@
                     <span class="text-tggreen-neon">NEWS</span>
                 </h1>
             </div>
-            <div class="language-switcher compact flex items-center gap-1" aria-label="Til tanlash">
-                <select id="lang-select-m" class="lang-select compact-select" onchange="setLang(this.value)" title="Tilni tanlash">
-                    <option value="uz">🇺🇿 UZ</option>
-                    <option value="ru">🇷🇺 RU</option>
-                    <option value="en">🇬🇧 EN</option>
-                </select>
+            <div class="language-switcher custom-lang compact flex items-center gap-1" data-lang-menu aria-label="Til tanlash">
+                <button type="button" class="lang-trigger compact-trigger" data-lang-trigger aria-haspopup="listbox" aria-expanded="false" title="Tilni tanlash"></button>
+                <div class="lang-menu mobile-lang-menu" data-lang-options role="listbox">
+                    <button type="button" class="lang-option" data-lang-option="uz" role="option">
+                        <img class="flag-img" data-flag="uz" alt=""> <span>UZ</span>
+                    </button>
+                    <button type="button" class="lang-option" data-lang-option="ru" role="option">
+                        <img class="flag-img" data-flag="ru" alt=""> <span>RU</span>
+                    </button>
+                    <button type="button" class="lang-option" data-lang-option="en" role="option">
+                        <img class="flag-img" data-flag="en" alt=""> <span>EN</span>
+                    </button>
+                </div>
             </div>
         </div>
 
