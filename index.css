@@ -970,6 +970,25 @@ lottie-player {
     height: 60px !important;
 }
 
+.sticker-mockup-emoji.sticker-lg {
+    width: 90px !important;
+    height: 90px !important;
+}
+
+.sticker-mockup-emoji.sticker-lg .premium-emoji.lottie-emoji-badge {
+    width: 90px !important;
+    height: 90px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+.sticker-mockup-emoji.sticker-lg .premium-emoji.lottie-emoji-badge lottie-player {
+    width: 90px !important;
+    height: 90px !important;
+}
+
 @media (min-width: 768px) {
     .hub-connected-grid {
         position: relative;
