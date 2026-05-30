@@ -192,25 +192,25 @@ body {
 
 @media (max-width: 767px) {
     .carousel-stage {
-        height: 285px;
+        height: 340px;
     }
     .carousel-card {
-        width: 120px;
-        height: 165px;
-        margin-left: -60px;
-        margin-top: -82.5px;
-        border-radius: 14px;
+        width: 148px;
+        height: 205px;
+        margin-left: -74px;
+        margin-top: -102.5px;
+        border-radius: 16px;
         box-shadow: 0 5px 15px -4px rgba(15, 23, 42, 0.04);
     }
     .carousel-card.active {
         box-shadow: 0 10px 20px -5px rgba(0, 200, 83, 0.08);
     }
     .carousel-core {
-        width: 44px;
-        height: 44px;
+        width: 48px;
+        height: 48px;
     }
     .carousel-core i {
-        font-size: 1.1rem !important;
+        font-size: 1.2rem !important;
     }
 }
 

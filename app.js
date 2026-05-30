@@ -1,13 +1,11 @@
 
-
 import '@lottiefiles/lottie-player';
 
 function initUptimeCounter() {
-    const startDate = new Date('2025-06-18T00:00:00+05:00'); 
+    const startDate = new Date('2025-06-18T00:00:00+05:00');
 
     function updateCounter() {
         const now = new Date();
-        
         const msPerSec = 1000;
         const msPerMin = msPerSec * 60;
         const msPerHour = msPerMin * 60;
@@ -29,7 +27,6 @@ function initUptimeCounter() {
 
         const days = Math.floor(diffMs / msPerDay);
         diffMs %= msPerDay;
-
         const hours = Math.floor(diffMs / msPerHour);
 
         const elements = {
@@ -52,36 +49,36 @@ class TgEmoji extends HTMLElement {
     connectedCallback() {
         const emojiId = this.getAttribute('emoji-id') || '';
         const emojiSymbol = this.textContent.trim();
-        
+
         let glowClass = 'emoji-default';
         let lottieSrc = '';
 
         if (emojiId === '5992474324273995420') {
             glowClass = 'emoji-premium-lightning';
             lottieSrc = './asstes/logo.json';
-        } else if (emojiId === '5468239023456722394') { 
+        } else if (emojiId === '5468239023456722394') {
             glowClass = 'emoji-crown';
             lottieSrc = './asstes/0.json';
-        } else if (emojiId === '5468239023456722395') { 
+        } else if (emojiId === '5468239023456722395') {
             glowClass = 'emoji-lightning';
             lottieSrc = './asstes/1.json';
-        } else if (emojiId === '5468239023456722397') { 
+        } else if (emojiId === '5468239023456722397') {
             glowClass = 'emoji-star';
             lottieSrc = './asstes/2.json';
-        } else if (emojiId === '5468239023456722396') { 
+        } else if (emojiId === '5468239023456722396') {
             glowClass = 'emoji-gem';
             lottieSrc = './asstes/3.json';
-        } else if (emojiId === '5231339530249845638') { 
+        } else if (emojiId === '5231339530249845638') {
             glowClass = 'emoji-default';
             lottieSrc = './asstes/4.json';
-        } else if (emojiId === '5468239023456722398') { 
+        } else if (emojiId === '5468239023456722398') {
             glowClass = 'emoji-fire';
             lottieSrc = './asstes/5.json';
-        } else if (emojiId === '5468239023456722399') { 
+        } else if (emojiId === '5468239023456722399') {
             glowClass = 'emoji-gift';
             lottieSrc = './asstes/6.json';
         }
-        
+
         if (lottieSrc) {
             this.innerHTML = `
                 <span class="premium-emoji lottie-emoji-badge ${glowClass}" data-emoji-id="${emojiId}">
@@ -93,7 +90,7 @@ class TgEmoji extends HTMLElement {
             else if (emojiSymbol === '⚡') glowClass = 'emoji-lightning';
             else if (emojiSymbol === '💎') glowClass = 'emoji-gem';
             else if (emojiSymbol === '⭐') glowClass = 'emoji-star';
-            
+
             this.innerHTML = `
                 <span class="premium-emoji ${glowClass}" data-emoji-id="${emojiId}">
                     ${emojiSymbol}
@@ -106,10 +103,10 @@ customElements.define('tg-emoji', TgEmoji);
 
 const admins = [
     { username: 'xolid', name: 'Xolid', role: 'Ega', color: 'from-orange-400 to-red-500', text: 'Ega' },
-    { username: 'tonchivoy', name: 'Tonchivoy', role: 'Admin', color: 'from-blue-400 to-indigo-500', text: 'Admin' },
+    { username: 'tonchivoy', name: 'Jack', role: 'Admin', color: 'from-blue-400 to-indigo-500', text: 'Admin' },
     { username: 'jama_0432', name: 'Jama', role: 'Admin', color: 'from-emerald-400 to-teal-600', text: 'Admin' },
     { username: 'bbaxttt', name: 'Baxt', role: 'Admin', color: 'from-rose-400 to-pink-500', text: 'Admin' },
-    { username: 'kafilhub', name: 'Kafil Hub', role: 'Admin', color: 'from-purple-400 to-violet-600', text: 'Admin' },
+    { username: 'kafilhub', name: 'Abdulloh', role: 'Admin', color: 'from-purple-400 to-violet-600', text: 'Admin' },
     { username: 'kaylora', name: 'Kaylora', role: 'Admin', color: 'from-cyan-400 to-blue-500', text: 'Admin' }
 ];
 
@@ -118,7 +115,7 @@ let isDragging = false;
 let startX = 0;
 let currentRotationY = 0;
 let autoRotateActive = true;
-let radius = 230; 
+let radius = 230;
 
 function setupTeamCarousel() {
     const container = document.getElementById('carousel-container');
@@ -127,11 +124,11 @@ function setupTeamCarousel() {
     container.innerHTML = '';
 
     if (window.innerWidth < 768) {
-        radius = 135; 
+        radius = 160;
     } else if (window.innerWidth < 1024) {
-        radius = 195; 
+        radius = 195;
     } else {
-        radius = 260; 
+        radius = 260;
     }
 
     admins.forEach((admin, i) => {
@@ -139,9 +136,7 @@ function setupTeamCarousel() {
         card.className = 'carousel-card flex flex-col items-center justify-between p-3.5 cursor-pointer select-none';
         card.setAttribute('data-index', i);
         const initials = admin.name.substring(0, 2).toUpperCase();
-
         const directAvatarUrl = `https://t.me/i/userpic/320/${admin.username}.jpg`;
-
         card.innerHTML = `
             <div class="w-full flex items-center justify-between">
                 <span class="px-1.5 py-0.5 text-[8px] font-extrabold rounded bg-tggreen-neon/10 text-tggreen-neon border border-tggreen-neon/20">
@@ -149,11 +144,9 @@ function setupTeamCarousel() {
                 </span>
                 <i class="fab fa-telegram text-tgblue text-xs"></i>
             </div>
-            
             <div class="relative flex flex-col items-center">
-                <!-- Auto fetching profile pictures directly from t.me/i/userpic/320/ format -->
                 <div class="relative w-11 h-11 md:w-14 md:h-14 rounded-full flex items-center justify-center bg-gradient-to-br ${admin.color} border border-white/10 shadow mb-1.5 overflow-hidden">
-                    <img src="${directAvatarUrl}" 
+                    <img src="${directAvatarUrl}"
                          alt="${admin.name}"
                          class="absolute inset-0 w-full h-full object-cover"
                          onerror="this.style.display='none'" />
@@ -162,9 +155,8 @@ function setupTeamCarousel() {
                 <h3 class="font-bold text-[10px] md:text-xs text-slate-800 leading-tight">${admin.name}</h3>
                 <span class="text-[8px] md:text-[9px] text-slate-500 font-medium">@${admin.username}</span>
             </div>
-            
-            <a href="https://t.me/${admin.username}" 
-               target="_blank" 
+            <a href="https://t.me/${admin.username}"
+               target="_blank"
                class="w-full text-center py-1 md:py-1.5 px-2 rounded-lg bg-tgblue/10 hover:bg-tgblue/20 border border-tgblue/15 text-tgblue text-[8px] md:text-[9px] font-extrabold transition-all duration-300">
                 Yozish <i class="fas fa-paper-plane ml-0.5"></i>
             </a>
@@ -189,7 +181,6 @@ function setupTeamCarousel() {
             if (Math.abs(startX - (e.clientX || e.touches?.[0]?.clientX || 0)) > 5) return;
             const idx = parseInt(card.getAttribute('data-index'));
             const targetAngle = -idx * 60;
-            
             autoRotateActive = false;
             animateRotation(targetAngle);
             setTimeout(() => { autoRotateActive = true; }, 8000);
@@ -201,10 +192,10 @@ function animateRotation(targetAngle) {
     let diff = (targetAngle - currAngle) % 360;
     if (diff > 180) diff -= 360;
     if (diff < -180) diff += 360;
-    
+
     let step = 0;
-    const duration = 20; 
-    
+    const duration = 20;
+
     function anim() {
         if (step < duration && !isDragging) {
             currAngle += diff / duration;
@@ -230,9 +221,9 @@ function updateCardsPosition() {
     cards.forEach((card, i) => {
         const cardAngle = i * 60;
         const currentCardRot = cardAngle + currAngle;
-        
+
         card.style.transform = `rotateY(${currentCardRot}deg) translateZ(${radius}px) rotateY(${-currentCardRot}deg)`;
-        
+
         const rad = (currentCardRot * Math.PI) / 180;
         const cosVal = Math.cos(rad);
         card.style.zIndex = Math.round((cosVal + 1) * 10);
@@ -258,11 +249,11 @@ function dragMove(e) {
     if (e.touches && e.cancelable) {
         e.preventDefault();
     }
-    
+
     const clientX = e.clientX || e.touches?.[0]?.clientX || 0;
     const deltaX = clientX - startX;
     const sensitivity = 0.25;
-    
+
     currAngle = currentRotationY + deltaX * sensitivity;
     updateCardsPosition();
 }
@@ -270,10 +261,10 @@ function dragMove(e) {
 function dragEnd() {
     if (!isDragging) return;
     isDragging = false;
-    
+
     const targetAngle = Math.round(currAngle / 60) * 60;
     animateRotation(targetAngle);
-    
+
     setTimeout(() => {
         if (!isDragging) autoRotateActive = true;
     }, 6000);
@@ -281,7 +272,7 @@ function dragEnd() {
 
 function autoRotateLoop() {
     if (autoRotateActive && !isDragging && document.getElementById('team-page')?.classList.contains('active')) {
-        currAngle -= 0.12; 
+        currAngle -= 0.12;
         updateCardsPosition();
     }
     requestAnimationFrame(autoRotateLoop);
@@ -312,7 +303,7 @@ function renderProducts(category) {
     items.forEach(item => {
         const itemDiv = document.createElement('div');
         itemDiv.className = 'p-3 rounded-xl bg-white/60 hover:bg-white/95 border border-slate-200/50 flex items-center justify-between transition-all hover:border-tgpremium/30 hover:scale-[1.01] hover:shadow-sm shadow-xs';
-        
+
         itemDiv.innerHTML = `
             <div class="flex items-center space-x-2">
                 <span class="text-base">${item.icon}</span>
@@ -344,7 +335,6 @@ function initShopWidget() {
         });
         activeBtn.classList.remove('text-slate-400', 'border-transparent');
         activeBtn.classList.add('text-slate-900', 'border-tgpremium');
-
         renderProducts(category);
     }
 
@@ -360,22 +350,22 @@ function createBackgroundParticles() {
     const container = document.getElementById('particles-container') || document.body;
     const colors = ['rgba(0, 255, 102, 0.04)', 'rgba(0, 152, 234, 0.03)', 'rgba(142, 45, 226, 0.03)'];
     const limit = window.innerWidth < 768 ? 3 : 6;
-    
+
     for (let i = 0; i < limit; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
-        
+
         const size = Math.random() * 120 + 50;
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
-        
+
         particle.style.left = `${Math.random() * 100}vw`;
         particle.style.bottom = `-${Math.random() * 20 + 5}vh`;
         particle.style.animationDelay = `${Math.random() * 10}s`;
         particle.style.animationDuration = `${Math.random() * 18 + 12}s`;
-        
+
         particle.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]} 0%, rgba(0,0,0,0) 70%)`;
-        
+
         container.appendChild(particle);
     }
 }
@@ -473,12 +463,12 @@ function initNavigation() {
     window.addEventListener('resize', () => {
         if (resizeTimer) clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
-        const activeTab = document.querySelector('.nav-tab-active');
-        if (activeTab) {
-            const pageId = activeTab.getAttribute('data-page');
-            syncActivePage(pageId);
-        }
-        setupTeamCarousel();
+            const activeTab = document.querySelector('.nav-tab-active');
+            if (activeTab) {
+                const pageId = activeTab.getAttribute('data-page');
+                syncActivePage(pageId);
+            }
+            setupTeamCarousel();
         }, 120);
     });
 }
@@ -526,26 +516,21 @@ function initStickerShowcase() {
     ];
 
     let currentIndex = 0;
-    let activePlayer = 1; 
+    let activePlayer = 1;
 
     setInterval(() => {
-        
         currentIndex = (currentIndex + 1) % stickerAssets.length;
         const nextAsset = stickerAssets[currentIndex];
 
         if (activePlayer === 1) {
-            
             p2.innerHTML = `<lottie-player src="${nextAsset}" background="transparent" speed="1.2" style="width: 100%; height: 100%;" loop autoplay></lottie-player>`;
-            
             p1.style.opacity = '0';
             p1.style.transform = 'scale(0.75)';
             p2.style.opacity = '1';
             p2.style.transform = 'scale(1)';
             activePlayer = 2;
         } else {
-            
             p1.innerHTML = `<lottie-player src="${nextAsset}" background="transparent" speed="1.2" style="width: 100%; height: 100%;" loop autoplay></lottie-player>`;
-            
             p2.style.opacity = '0';
             p2.style.transform = 'scale(0.75)';
             p1.style.opacity = '1';
@@ -576,12 +561,11 @@ function startApp() {
     autoRotateLoop();
 
     if (document.readyState === 'complete') {
-        setTimeout(hideLoader, 1000); 
+        setTimeout(hideLoader, 1000);
     } else {
         window.addEventListener('load', () => {
             setTimeout(hideLoader, 1000);
         });
-        
         setTimeout(hideLoader, 3000);
     }
 }
