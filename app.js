@@ -1,5 +1,7 @@
 
 
+import '@lottiefiles/lottie-player';
+
 function initUptimeCounter() {
     const startDate = new Date('2025-06-18T00:00:00+05:00'); 
 
@@ -553,77 +555,6 @@ function initStickerShowcase() {
     }, 1800);
 }
 
-function initLiveOrdersTicker() {
-    const usernames = [
-        'nodir_ton', 'premium_admin', 'shaxzod_stars', 'ton_buyer', 'lider_uz',
-        'vip_otc', 'garant_buyer', 'stars_lord', 'otc_expert', 'uzbek_ton',
-        'bekzod_premium', 'jasur_ton', 'stars_fan', 'doston_sales', 'abror_garant'
-    ];
-    const products = [
-        { name: 'Premium 3 oy', icon: 'P3' },
-        { name: 'Premium 6 oy', icon: 'P6' },
-        { name: 'Premium 1 yil', icon: 'P12' },
-        { name: '250 Stars', icon: 'S' },
-        { name: '500 Stars', icon: 'S' },
-        { name: '1000 Stars', icon: 'S' },
-        { name: 'SalesNews NFT', icon: 'NFT' }
-    ];
-
-    const capsule = document.createElement('div');
-    capsule.className = 'live-order-toast select-none pointer-events-none';
-    capsule.innerHTML = `
-        <div class="live-order-dot"></div>
-        <div class="live-order-icon"></div>
-        <div class="live-order-copy">
-            <span class="live-order-title"></span>
-            <span class="live-order-text"></span>
-        </div>
-    `;
-
-    document.body.appendChild(capsule);
-
-    let slideOutTimeout = null;
-    const titleEl = capsule.querySelector('.live-order-title');
-    const textEl = capsule.querySelector('.live-order-text');
-    const iconEl = capsule.querySelector('.live-order-icon');
-
-    function triggerRandomTicker() {
-        const randomUser = usernames[Math.floor(Math.random() * usernames.length)];
-        const randomProd = products[Math.floor(Math.random() * products.length)];
-
-        if (slideOutTimeout) {
-            clearTimeout(slideOutTimeout);
-            slideOutTimeout = null;
-        }
-
-        capsule.classList.remove('is-visible');
-        iconEl.textContent = randomProd.icon;
-        titleEl.textContent = `Yangi xarid: @${randomUser}`;
-        textEl.textContent = `${randomProd.name} olindi`;
-
-        requestAnimationFrame(() => {
-            capsule.classList.add('is-visible');
-
-            slideOutTimeout = setTimeout(() => {
-                capsule.classList.remove('is-visible');
-            }, 4200);
-        });
-    }
-
-    function scheduleNext() {
-        const delay = Math.random() * 10000 + 14000;
-        setTimeout(() => {
-            triggerRandomTicker();
-            scheduleNext();
-        }, delay);
-    }
-
-    setTimeout(() => {
-        triggerRandomTicker();
-        scheduleNext();
-    }, 3500);
-}
-
 function hideLoader() {
     const loader = document.getElementById('premium-loader');
     if (loader) {
@@ -642,7 +573,6 @@ function startApp() {
     initShopWidget();
     setupTeamCarousel();
     initStickerShowcase();
-    initLiveOrdersTicker();
     autoRotateLoop();
 
     if (document.readyState === 'complete') {

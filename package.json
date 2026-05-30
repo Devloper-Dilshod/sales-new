@@ -16,5 +16,8 @@
     "premium"
   ],
   "author": "SalesNews Team",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@lottiefiles/lottie-player": "^2.0.12"
+  }
 }
