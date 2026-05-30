@@ -451,14 +451,14 @@ function setupTeamCarousel() {
 
     admins.forEach((admin, i) => {
         const card = document.createElement('div');
-        card.className = `carousel-card flex flex-col items-center justify-between p-3.5 cursor-pointer select-none ${admin.owner ? 'owner-card' : ''}`;
+        card.className = 'carousel-card flex flex-col items-center justify-between p-3.5 cursor-pointer select-none';
         card.setAttribute('data-index', i);
         const initials = admin.name.substring(0, 2).toUpperCase();
         const directAvatarUrl = `https://t.me/i/userpic/320/${admin.username}.jpg`;
         const badgeClass = admin.owner
             ? 'owner-role-badge'
             : 'bg-tggreen-neon/10 text-tggreen-neon border border-tggreen-neon/20';
-        const nameClass = admin.owner ? 'owner-name' : 'text-slate-800';
+        const nameClass = 'text-slate-800';
         card.innerHTML = `
             <div class="w-full flex items-center justify-between">
                 <span class="px-1.5 py-0.5 text-[8px] font-extrabold rounded ${badgeClass}">
