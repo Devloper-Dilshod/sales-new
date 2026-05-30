@@ -57,7 +57,13 @@ const translations = {
         mnav_market: "Bozor",
         mnav_team: "Jamoa",
         admin_write: "Yozish",
-        product_bot: "Botda"
+        product_bot: "Botda",
+        eco_feat1_title: "Tezkor yetkazib berish",
+        eco_feat1_desc: "Buyurtmalar 5-15 daqiqada bajariladi",
+        eco_feat2_title: "100% Xavfsiz garant",
+        eco_feat2_desc: "Garant forum orqali xavfsiz bitimlar",
+        eco_feat3_title: "24/7 Faol qo'llab-quvvatlash",
+        eco_feat3_desc: "Malakali adminlar doim yordamga tayyor"
     },
     ru: {
         page_title: "SalesNews.uz - Telegram Premium, Stars, TON NFT и гарант-сервисы",
@@ -114,7 +120,13 @@ const translations = {
         mnav_market: "Маркет",
         mnav_team: "Команда",
         admin_write: "Написать",
-        product_bot: "В боте"
+        product_bot: "В боте",
+        eco_feat1_title: "Быстрая доставка",
+        eco_feat1_desc: "Заказы выполняются за 5-15 минут",
+        eco_feat2_title: "100% Безопасный гарант",
+        eco_feat2_desc: "Безопасные сделки через гарант-форум",
+        eco_feat3_title: "Активная поддержка 24/7",
+        eco_feat3_desc: "Администраторы всегда готовы помочь"
     },
     en: {
         page_title: "SalesNews.uz - Telegram Premium, Stars, TON NFT and guarantor services",
@@ -171,7 +183,13 @@ const translations = {
         mnav_market: "Market",
         mnav_team: "Team",
         admin_write: "Message",
-        product_bot: "In bot"
+        product_bot: "In bot",
+        eco_feat1_title: "Fast Delivery",
+        eco_feat1_desc: "Orders processed in 5-15 minutes",
+        eco_feat2_title: "100% Safe Guarantor",
+        eco_feat2_desc: "Secure transactions via guarantor forum",
+        eco_feat3_title: "24/7 Active Support",
+        eco_feat3_desc: "Qualified admins are always ready to help"
     }
 };
 
@@ -725,17 +743,22 @@ function initNavigation() {
             }
         });
 
-        if (indicator && activeMobileTab) {
-            const rect = activeMobileTab.getBoundingClientRect();
-            const parentRect = activeMobileTab.parentElement.getBoundingClientRect();
-            const leftOffset = rect.left - parentRect.left + (rect.width - 20) / 2;
-            indicator.style.left = `${leftOffset}px`;
-        }
+        updateMobileIndicator();
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         if (pageId === 'team-page') {
             setTimeout(setupTeamCarousel, 100);
+        }
+    }
+
+    function updateMobileIndicator() {
+        const activeMobileTab = document.querySelector('.mobile-bottom-nav button.nav-tab-active');
+        if (indicator && activeMobileTab) {
+            const rect = activeMobileTab.getBoundingClientRect();
+            const parentRect = activeMobileTab.parentElement.getBoundingClientRect();
+            const leftOffset = rect.left - parentRect.left + (rect.width - 20) / 2;
+            indicator.style.left = `${leftOffset}px`;
         }
     }
 
@@ -779,11 +802,7 @@ function initNavigation() {
     window.addEventListener('resize', () => {
         if (resizeTimer) clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
-            const activeTab = document.querySelector('.nav-tab-active');
-            if (activeTab) {
-                const pageId = activeTab.getAttribute('data-page');
-                syncActivePage(pageId);
-            }
+            updateMobileIndicator();
             setupTeamCarousel();
         }, 120);
     });
@@ -839,21 +858,23 @@ function initStickerShowcase() {
         const nextAsset = stickerAssets[currentIndex];
 
         if (activePlayer === 1) {
-            p2.innerHTML = `<lottie-player src="${nextAsset}" background="transparent" speed="1.2" style="width: 100%; height: 100%;" loop autoplay></lottie-player>`;
+            const player = p2.querySelector('lottie-player');
+            if (player) player.setAttribute('src', nextAsset);
             p1.style.opacity = '0';
             p1.style.transform = 'scale(0.75)';
             p2.style.opacity = '1';
             p2.style.transform = 'scale(1)';
             activePlayer = 2;
         } else {
-            p1.innerHTML = `<lottie-player src="${nextAsset}" background="transparent" speed="1.2" style="width: 100%; height: 100%;" loop autoplay></lottie-player>`;
+            const player = p1.querySelector('lottie-player');
+            if (player) player.setAttribute('src', nextAsset);
             p2.style.opacity = '0';
             p2.style.transform = 'scale(0.75)';
             p1.style.opacity = '1';
             p1.style.transform = 'scale(1)';
             activePlayer = 1;
         }
-    }, 1800);
+    }, 3200);
 }
 
 function hideLoader() {

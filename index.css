@@ -262,49 +262,39 @@ body {
 @keyframes fluidBlob1 {
     0%, 100% {
         transform: translate(0, 0) scale(1) rotate(0deg);
-        border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
     }
     33% {
         transform: translate(40px, 60px) scale(1.1) rotate(120deg);
-        border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%;
     }
     66% {
         transform: translate(-30px, 30px) scale(0.95) rotate(240deg);
-        border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%;
     }
 }
 @keyframes fluidBlob2 {
     0%, 100% {
         transform: translate(0, 0) scale(1) rotate(0deg);
-        border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%;
     }
     33% {
         transform: translate(-60px, -40px) scale(0.9) rotate(-120deg);
-        border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
     }
     66% {
         transform: translate(30px, -70px) scale(1.15) rotate(-240deg);
-        border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%;
     }
 }
 @keyframes fluidBlob3 {
     0%, 100% {
         transform: translate(0, 0) scale(1.05) rotate(0deg);
-        border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%;
     }
     50% {
         transform: translate(50px, -50px) scale(1.15) rotate(180deg);
-        border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
     }
 }
 @keyframes fluidBlob4 {
     0%, 100% {
         transform: translate(0, 0) scale(0.95) rotate(0deg);
-        border-radius: 35% 65% 55% 45% / 48% 48% 52% 52%;
     }
     50% {
         transform: translate(-40px, 40px) scale(1.1) rotate(-180deg);
-        border-radius: 65% 35% 45% 55% / 55% 55% 45% 45%;
     }
 }
 
@@ -805,31 +795,35 @@ tg-emoji {
     width: 320px;
     height: 320px;
     border-radius: 50%;
-    will-change: transform, border-radius, opacity;
+    will-change: transform, opacity;
 }
 
 .mesh-blob-1 {
     background: radial-gradient(circle, rgba(0, 200, 83, 0.28) 0%, rgba(0, 200, 83, 0) 70%);
     left: -8%;
     top: -5%;
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
 }
 
 .mesh-blob-2 {
     background: radial-gradient(circle, rgba(142, 45, 226, 0.25) 0%, rgba(142, 45, 226, 0) 70%);
     right: -5%;
     top: 15%;
+    border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%;
 }
 
 .mesh-blob-3 {
     background: radial-gradient(circle, rgba(0, 136, 204, 0.26) 0%, rgba(0, 136, 204, 0) 70%);
     left: 10%;
     bottom: -8%;
+    border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%;
 }
 
 .mesh-blob-4 {
     background: radial-gradient(circle, rgba(255, 179, 0, 0.22) 0%, rgba(255, 179, 0, 0) 70%);
     right: 15%;
     bottom: 5%;
+    border-radius: 35% 65% 55% 45% / 48% 48% 52% 52%;
 }
 
 .channel-premium-badge tg-emoji,
