@@ -421,7 +421,7 @@ customElements.define('tg-emoji', TgEmoji);
 
 const admins = [
     { username: 'xolid', name: 'Xolid', role: 'Ega', color: 'from-violet-500 to-emerald-400', text: 'Ega', owner: true },
-    { username: 'tonchivoy', name: 'Jack', role: 'Admin', color: 'from-blue-400 to-indigo-500', text: 'Admin' },
+    { username: 'tonchivoy', name: 'Jack', role: 'Admin', color: 'from-gray-900 to-black', text: 'Admin' },
     { username: 'jama_0432', name: 'Jama', role: 'Admin', color: 'from-emerald-400 to-teal-600', text: 'Admin' },
     { username: 'bbaxttt', name: 'Baxt', role: 'Admin', color: 'from-rose-400 to-pink-500', text: 'Admin' },
     { username: 'kafilhub', name: 'Abdulloh', role: 'Admin', color: 'from-purple-400 to-violet-600', text: 'Admin' },
