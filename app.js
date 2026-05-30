@@ -895,6 +895,37 @@ async function detectLanguageByIP() {
     }
 }
 
+function animateLoaderProgress(onComplete) {
+    const loaderText = document.getElementById('loader-text');
+    const progressBar = document.getElementById('loader-progress-bar');
+    if (!loaderText || !progressBar) {
+        onComplete();
+        return;
+    }
+
+    let progress = 0;
+    const duration = 1500; // 1.5 seconds loading time
+    const intervalTime = 30; // update every 30ms
+    const steps = duration / intervalTime;
+    const increment = 100 / steps;
+
+    const timer = setInterval(() => {
+        progress += increment;
+        if (progress >= 100) {
+            progress = 100;
+            clearInterval(timer);
+            
+            loaderText.textContent = '100%';
+            progressBar.style.width = '100%';
+            setTimeout(onComplete, 300);
+        } else {
+            const displayProgress = Math.floor(progress);
+            loaderText.textContent = `${displayProgress}%`;
+            progressBar.style.width = `${displayProgress}%`;
+        }
+    }, intervalTime);
+}
+
 function startApp() {
     applyTranslations();
     initLanguageMenus();
@@ -910,14 +941,9 @@ function startApp() {
         detectLanguageByIP();
     }
 
-    if (document.readyState === 'complete') {
-        setTimeout(hideLoader, 1000);
-    } else {
-        window.addEventListener('load', () => {
-            setTimeout(hideLoader, 1000);
-        });
-        setTimeout(hideLoader, 3000);
-    }
+    animateLoaderProgress(() => {
+        hideLoader();
+    });
 }
 
 if (document.readyState === 'loading') {
