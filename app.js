@@ -3,8 +3,8 @@ import '@lottiefiles/lottie-player';
 
 const translations = {
     uz: {
-        page_title: "SalesNews.uz - Telegram Premium, Stars va TON NFT",
-        meta_desc: "SalesNews.uz - Telegram Premium, Stars, garant forumlar va TON NFT havolalari.",
+        page_title: "SalesNews.uz - Telegram Premium, Stars, TON NFT va garant xizmatlar",
+        meta_desc: "SalesNews.uz - Telegram Premium, Stars, TON NFT, GetGems emoji kolleksiyasi, garant forum va Sales ekotizimi havolalari.",
         loading: "Yuklanmoqda...",
         nav_home: "Bosh sahifa",
         nav_eco: "Bizning ekotizim",
@@ -60,8 +60,8 @@ const translations = {
         product_bot: "Botda"
     },
     ru: {
-        page_title: "SalesNews.uz - Telegram Premium, Stars и TON NFT",
-        meta_desc: "SalesNews.uz - Telegram Premium, Stars, гарант-форумы и ссылки TON NFT.",
+        page_title: "SalesNews.uz - Telegram Premium, Stars, TON NFT и гарант-сервисы",
+        meta_desc: "SalesNews.uz - Telegram Premium, Stars, TON NFT, коллекция эмодзи GetGems, гарант-форум и ссылки экосистемы Sales.",
         loading: "Загрузка...",
         nav_home: "Главная",
         nav_eco: "Наша экосистема",
@@ -117,8 +117,8 @@ const translations = {
         product_bot: "В боте"
     },
     en: {
-        page_title: "SalesNews.uz - Telegram Premium, Stars and TON NFT",
-        meta_desc: "SalesNews.uz - Telegram Premium, Stars, guarantor forums and TON NFT links.",
+        page_title: "SalesNews.uz - Telegram Premium, Stars, TON NFT and guarantor services",
+        meta_desc: "SalesNews.uz - Telegram Premium, Stars, TON NFT, GetGems emoji collection, guarantor forum and Sales ecosystem links.",
         loading: "Loading...",
         nav_home: "Home",
         nav_eco: "Our Ecosystem",
