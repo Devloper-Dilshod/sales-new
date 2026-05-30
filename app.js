@@ -446,7 +446,8 @@ const admins = [
     { username: 'jama_0432', name: 'Jama', role: 'Admin', color: 'from-emerald-400 to-teal-600', text: 'Admin' },
     { username: 'bbaxttt', name: 'Baxt', role: 'Admin', color: 'from-rose-400 to-pink-500', text: 'Admin' },
     { username: 'kafilhub', name: 'Abdulloh', role: 'Admin', color: 'from-purple-400 to-violet-600', text: 'Admin' },
-    { username: 'kaylora', name: 'Kaylora', role: 'Admin', color: 'from-cyan-400 to-blue-500', text: 'Admin' }
+    { username: 'kaylora', name: 'Kaylora', role: 'Admin', color: 'from-cyan-400 to-blue-500', text: 'Admin' },
+    { username: 'umarbe', name: 'Umar', role: 'Admin', color: 'from-amber-400 to-orange-500', text: 'Admin' }
 ];
 
 let currAngle = 0;
