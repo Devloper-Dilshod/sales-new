@@ -43,8 +43,8 @@ const translations = {
         btn_view: "Ko'rish",
         market_title: "Bozor va botlar",
         market_desc: "Bot, Stars, Premium va TON NFT havolalari.",
-        nft_badge: "TON NFT emoji kolleksiyasi",
-        sticker_pack_title: "SalesNews emojilar to'plami",
+        nft_badge: "TON NFT STICKERI KOLLEKSIYASI",
+        sticker_pack_title: "Sales News sticker toʻplami",
         nft_collection_desc: "TON tarmog'idagi SalesNews emoji NFT to'plami.",
         btn_getgems: "GetGems-da ko'rish",
         bot_services_title: "Stars & Premium Xizmatlari",
@@ -100,8 +100,8 @@ const translations = {
         btn_view: "Открыть",
         market_title: "Маркет и боты",
         market_desc: "Ссылки на бот, Stars, Premium и TON NFT.",
-        nft_badge: "TON NFT коллекция эмодзи",
-        sticker_pack_title: "Набор эмодзи SalesNews",
+        nft_badge: "КОЛЛЕКЦИЯ СТИКЕРОВ TON NFT",
+        sticker_pack_title: "Набор стикеров Sales News",
         nft_collection_desc: "NFT-набор эмодзи SalesNews в сети TON.",
         btn_getgems: "Открыть на GetGems",
         bot_services_title: "Услуги Stars & Premium",
@@ -157,8 +157,8 @@ const translations = {
         btn_view: "Open",
         market_title: "Market and Bots",
         market_desc: "Bot, Stars, Premium and TON NFT links.",
-        nft_badge: "TON NFT Emoji Collection",
-        sticker_pack_title: "SalesNews Emoji Pack",
+        nft_badge: "TON NFT STICKER COLLECTION",
+        sticker_pack_title: "Sales News Sticker Pack",
         nft_collection_desc: "SalesNews emoji NFT pack on the TON network.",
         btn_getgems: "Open on GetGems",
         bot_services_title: "Stars & Premium Services",
@@ -451,13 +451,18 @@ function setupTeamCarousel() {
 
     admins.forEach((admin, i) => {
         const card = document.createElement('div');
-        card.className = `carousel-card flex flex-col items-center justify-between p-3.5 cursor-pointer select-none ${admin.owner ? 'owner-card' : ''}`;
+        const isJack = admin.name === 'Jack';
+        const cardClassList = ['carousel-card', 'flex', 'flex-col', 'items-center', 'justify-between', 'p-3.5', 'cursor-pointer', 'select-none'];
+        if (admin.owner) cardClassList.push('owner-card');
+        if (isJack) cardClassList.push('jack-card');
+        card.className = cardClassList.join(' ');
+
         card.setAttribute('data-index', i);
         const initials = admin.name.substring(0, 2).toUpperCase();
         const directAvatarUrl = `https://t.me/i/userpic/320/${admin.username}.jpg`;
         const badgeClass = admin.owner
             ? 'owner-role-badge'
-            : 'bg-tggreen-neon/10 text-tggreen-neon border border-tggreen-neon/20';
+            : (isJack ? 'jack-role-badge' : 'bg-tggreen-neon/10 text-tggreen-neon border border-tggreen-neon/20');
         const nameClass = 'text-slate-800';
         card.innerHTML = `
             <div class="w-full flex items-center justify-between">

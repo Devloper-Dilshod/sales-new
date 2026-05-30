@@ -162,6 +162,13 @@ body {
     box-shadow: 0 0 8px rgba(139, 92, 246, 0.12);
 }
 
+.jack-role-badge {
+    color: #0f172a;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.6);
+    box-shadow: 0 0 8px rgba(15, 23, 42, 0.12);
+}
+
 .carousel-card.owner-card {
     border-color: rgba(139, 92, 246, 0.6);
 }
@@ -169,6 +176,15 @@ body {
 .carousel-card.owner-card.active {
     border-color: rgba(139, 92, 246, 0.88);
     box-shadow: 0 15px 30px -5px rgba(139, 92, 246, 0.14);
+}
+
+.carousel-card.jack-card {
+    border-color: rgba(15, 23, 42, 0.6);
+}
+
+.carousel-card.jack-card.active {
+    border-color: rgba(15, 23, 42, 0.88);
+    box-shadow: 0 15px 30px -5px rgba(15, 23, 42, 0.14);
 }
 
 .carousel-card:not(.active) {
