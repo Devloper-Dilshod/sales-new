@@ -134,10 +134,18 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <script type="module" crossorigin src="/assets/index-CBUBw1Z3.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-C0KQJk6s.css">
+  <script type="module" crossorigin src="/assets/index-B8AmUOiG.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-8O7813Cf.css">
 </head>
 <body class="min-h-screen text-slate-800 pb-28 lg:pb-8">
+    <script>
+        (() => {
+            const savedTheme = localStorage.getItem('salesnews_theme');
+            const theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.dataset.theme = theme;
+            document.body.dataset.theme = theme;
+        })();
+    </script>
 
     <div id="premium-loader" class="fixed inset-0 z-[9999999] flex flex-col items-center justify-center bg-white transition-opacity duration-700 ease-out">
         <div class="flex flex-col items-center space-y-4">
@@ -189,7 +197,11 @@
                 <i class="fas fa-user-shield"></i> <span data-i18n="nav_team">Jamoa / adminlar</span>
             </button>
         </nav>
-        <div class="language-switcher custom-lang flex items-center gap-2 ml-4" data-lang-menu aria-label="Til tanlash">
+        <div class="flex items-center gap-2 ml-4">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Theme" title="Dark / Light">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+        <div class="language-switcher custom-lang flex items-center gap-2" data-lang-menu aria-label="Til tanlash">
             <span class="language-dot" aria-hidden="true"><i class="fa-solid fa-globe text-tggreen-neon"></i></span>
             <button type="button" class="lang-trigger" data-lang-trigger aria-haspopup="listbox" aria-expanded="false" title="Tilni tanlash"></button>
             <div class="lang-menu" data-lang-options role="listbox">
@@ -203,6 +215,7 @@
                     <img class="flag-img" data-flag="en" alt=""> <span>English</span>
                 </button>
             </div>
+        </div>
         </div>
     </header>
 
@@ -218,6 +231,10 @@
                     <span class="text-tggreen-neon">NEWS</span>
                 </h1>
             </a>
+            <div class="flex items-center gap-2">
+            <button type="button" class="theme-toggle compact-theme-toggle" data-theme-toggle aria-label="Theme" title="Dark / Light">
+                <i class="fa-solid fa-moon"></i>
+            </button>
             <div class="language-switcher custom-lang compact flex items-center gap-1" data-lang-menu aria-label="Til tanlash">
                 <button type="button" class="lang-trigger compact-trigger" data-lang-trigger aria-haspopup="listbox" aria-expanded="false" title="Tilni tanlash"></button>
                 <div class="lang-menu mobile-lang-menu" data-lang-options role="listbox">
@@ -231,6 +248,7 @@
                         <img class="flag-img" data-flag="en" alt=""> <span>EN</span>
                     </button>
                 </div>
+            </div>
             </div>
         </div>
 

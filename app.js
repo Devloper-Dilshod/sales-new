@@ -340,6 +340,40 @@ function initLanguageMenus() {
     });
 }
 
+function getInitialTheme() {
+    const savedTheme = localStorage.getItem('salesnews_theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') return savedTheme;
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function applyTheme(theme) {
+    const normalizedTheme = theme === 'dark' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = normalizedTheme;
+    document.body.dataset.theme = normalizedTheme;
+    document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+        const icon = button.querySelector('i');
+        if (icon) {
+            icon.className = normalizedTheme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        }
+        button.setAttribute('aria-label', normalizedTheme === 'dark' ? 'Light mode' : 'Dark mode');
+        button.setAttribute('title', normalizedTheme === 'dark' ? 'Light mode' : 'Dark mode');
+    });
+}
+
+function initThemeToggle() {
+    applyTheme(getInitialTheme());
+
+    document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+        if (button.dataset.initialized === 'true') return;
+        button.addEventListener('click', () => {
+            const nextTheme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('salesnews_theme', nextTheme);
+            applyTheme(nextTheme);
+        });
+        button.dataset.initialized = 'true';
+    });
+}
+
 function initUptimeCounter() {
     const startDate = new Date('2025-06-18T00:00:00+05:00');
 
@@ -442,7 +476,7 @@ customElements.define('tg-emoji', TgEmoji);
 
 const admins = [
     { username: 'xolid', name: 'Xolid', role: 'Ega', color: 'from-violet-500 to-emerald-400', text: 'Ega', owner: true },
-    { username: 'tonchivoy', name: 'Jack', role: 'Admin', color: 'from-gray-900 to-black', text: 'Admin' },
+    { username: 'tonchivoy', name: 'Jack', role: 'Admin', color: 'from-slate-600 to-slate-800', text: 'Admin' },
     { username: 'jama_0432', name: 'Jama', role: 'Admin', color: 'from-emerald-400 to-teal-600', text: 'Admin' },
     { username: 'bbaxttt', name: 'Baxt', role: 'Admin', color: 'from-rose-400 to-pink-500', text: 'Admin' },
     { username: 'umarbe', name: 'Umar', role: 'Admin', color: 'from-amber-400 to-orange-500', text: 'Admin' },
@@ -978,6 +1012,7 @@ function animateLoaderProgress(onComplete) {
 }
 
 function startApp() {
+    initThemeToggle();
     applyTranslations();
     initLanguageMenus();
     initUptimeCounter();
