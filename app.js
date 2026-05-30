@@ -49,52 +49,37 @@ function initUptimeCounter() {
 class TgEmoji extends HTMLElement {
     connectedCallback() {
         const emojiId = this.getAttribute('emoji-id') || '';
-        const emojiSymbol = this.textContent.trim();
-        
-        let glowClass = 'emoji-default';
-        let lottieSrc = '';
+        const rawSymbol = this.textContent.trim();
+        const emojiMap = {
+            '5992474324273995420': { src: './asstes/logo.json', symbol: '\u26a1\ufe0f', glow: 'emoji-premium-lightning' },
+            '5468239023456722394': { src: './asstes/0.json', symbol: '\ud83d\udc51', glow: 'emoji-crown' },
+            '5468239023456722395': { src: './asstes/1.json', symbol: '\u26a1\ufe0f', glow: 'emoji-lightning' },
+            '5468239023456722397': { src: './asstes/2.json', symbol: '\u2b50', glow: 'emoji-star' },
+            '5468239023456722396': { src: './asstes/3.json', symbol: '\ud83d\udc8e', glow: 'emoji-gem' },
+            '5231339530249845638': { src: './asstes/4.json', symbol: '\u2728', glow: 'emoji-default' },
+            '5468239023456722398': { src: './asstes/5.json', symbol: '\ud83d\udd25', glow: 'emoji-fire' },
+            '5468239023456722399': { src: './asstes/6.json', symbol: '\ud83c\udf81', glow: 'emoji-gift' }
+        };
+        const config = emojiMap[emojiId] || { symbol: rawSymbol || '\u2b50', glow: 'emoji-default' };
+        const symbol = config.symbol || rawSymbol || '\u2b50';
 
-        if (emojiId === '5992474324273995420') {
-            glowClass = 'emoji-premium-lightning';
-            lottieSrc = './asstes/logo.json';
-        } else if (emojiId === '5468239023456722394') { 
-            glowClass = 'emoji-crown';
-            lottieSrc = './asstes/0.json';
-        } else if (emojiId === '5468239023456722395') { 
-            glowClass = 'emoji-lightning';
-            lottieSrc = './asstes/1.json';
-        } else if (emojiId === '5468239023456722397') { 
-            glowClass = 'emoji-star';
-            lottieSrc = './asstes/2.json';
-        } else if (emojiId === '5468239023456722396') { 
-            glowClass = 'emoji-gem';
-            lottieSrc = './asstes/3.json';
-        } else if (emojiId === '5231339530249845638') { 
-            glowClass = 'emoji-default';
-            lottieSrc = './asstes/4.json';
-        } else if (emojiId === '5468239023456722398') { 
-            glowClass = 'emoji-fire';
-            lottieSrc = './asstes/5.json';
-        } else if (emojiId === '5468239023456722399') { 
-            glowClass = 'emoji-gift';
-            lottieSrc = './asstes/6.json';
-        }
-        
-        if (lottieSrc) {
+        if (config.src) {
             this.innerHTML = `
-                <span class="premium-emoji lottie-emoji-badge ${glowClass}" data-emoji-id="${emojiId}">
-                    <lottie-player src="${lottieSrc}" background="transparent" speed="1.2" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
+                <span class="premium-emoji lottie-emoji-badge ${config.glow}" data-emoji-id="${emojiId}" aria-label="${symbol}">
+                    <span class="emoji-fallback">${symbol}</span>
+                    <lottie-player src="${config.src}" background="transparent" speed="1.2" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
                 </span>
             `;
         } else {
-            if (emojiSymbol === '👑') glowClass = 'emoji-crown';
-            else if (emojiSymbol === '⚡') glowClass = 'emoji-lightning';
-            else if (emojiSymbol === '💎') glowClass = 'emoji-gem';
-            else if (emojiSymbol === '⭐') glowClass = 'emoji-star';
-            
+            let glowClass = config.glow;
+            if (symbol === '\ud83d\udc51') glowClass = 'emoji-crown';
+            else if (symbol === '\u26a1\ufe0f') glowClass = 'emoji-lightning';
+            else if (symbol === '\ud83d\udc8e') glowClass = 'emoji-gem';
+            else if (symbol === '\u2b50') glowClass = 'emoji-star';
+
             this.innerHTML = `
                 <span class="premium-emoji ${glowClass}" data-emoji-id="${emojiId}">
-                    ${emojiSymbol}
+                    ${symbol}
                 </span>
             `;
         }
@@ -287,16 +272,16 @@ function autoRotateLoop() {
 
 const productsData = {
     premium: [
-        { name: "Telegram Premium (3 oylik)", price: "95,000 UZS", label: "Sovg'a", icon: "🎁" },
-        { name: "Telegram Premium (6 oylik)", price: "165,000 UZS", label: "Hamyonbop", icon: "✨" },
-        { name: "Telegram Premium (12 oylik)", price: "290,000 UZS", label: "Eng zo'r narx", icon: "👑" }
+        { name: "Telegram Premium (3 oylik)", price: "95,000 UZS", label: "Sovg'a", icon: "\ud83c\udf81", emojiId: "5468239023456722399" },
+        { name: "Telegram Premium (6 oylik)", price: "165,000 UZS", label: "Hamyonbop", icon: "\u2728", emojiId: "5231339530249845638" },
+        { name: "Telegram Premium (12 oylik)", price: "290,000 UZS", label: "Eng zo'r narx", icon: "\ud83d\udc51", emojiId: "5468239023456722394" }
     ],
     stars: [
-        { name: "50 Telegram Stars", price: "15,000 UZS", label: "Tezkor", icon: "⭐" },
-        { name: "100 Telegram Stars", price: "29,000 UZS", label: "Ommabop", icon: "⭐" },
-        { name: "250 Telegram Stars", price: "69,000 UZS", label: "Eng yaxshi", icon: "⭐" },
-        { name: "500 Telegram Stars", price: "135,000 UZS", label: "Ko'p sotilgan", icon: "⭐" },
-        { name: "1000 Telegram Stars", price: "260,000 UZS", label: "Katta paket", icon: "⭐" }
+        { name: "50 Telegram Stars", price: "15,000 UZS", label: "Tezkor", icon: "\u2b50", emojiId: "5468239023456722397" },
+        { name: "100 Telegram Stars", price: "29,000 UZS", label: "Ommabop", icon: "\u2b50", emojiId: "5468239023456722397" },
+        { name: "250 Telegram Stars", price: "69,000 UZS", label: "Eng yaxshi", icon: "\u2b50", emojiId: "5468239023456722397" },
+        { name: "500 Telegram Stars", price: "135,000 UZS", label: "Ko'p sotilgan", icon: "\u2b50", emojiId: "5468239023456722397" },
+        { name: "1000 Telegram Stars", price: "260,000 UZS", label: "Katta paket", icon: "\u2b50", emojiId: "5468239023456722397" }
     ]
 };
 
@@ -313,7 +298,7 @@ function renderProducts(category) {
         
         itemDiv.innerHTML = `
             <div class="flex items-center space-x-2">
-                <span class="text-base">${item.icon}</span>
+                <tg-emoji emoji-id="${item.emojiId}" class="product-premium-emoji">${item.icon}</tg-emoji>
                 <div>
                     <span class="block text-[10.5px] font-bold text-slate-800">${item.name}</span>
                     <span class="text-[8px] text-slate-500 font-semibold tracking-wide uppercase">${item.label}</span>
@@ -560,13 +545,13 @@ function initLiveOrdersTicker() {
         'bekzod_premium', 'jasur_ton', 'stars_fan', 'doston_sales', 'abror_garant'
     ];
     const products = [
-        { name: 'Premium 3 oy', icon: 'P3' },
-        { name: 'Premium 6 oy', icon: 'P6' },
-        { name: 'Premium 1 yil', icon: 'P12' },
-        { name: '250 Stars', icon: 'S' },
-        { name: '500 Stars', icon: 'S' },
-        { name: '1000 Stars', icon: 'S' },
-        { name: 'SalesNews NFT', icon: 'NFT' }
+        { name: 'Premium 3 oy', icon: '\u26a1\ufe0f', emojiId: '5468239023456722395' },
+        { name: 'Premium 6 oy', icon: '\ud83d\udc8e', emojiId: '5468239023456722396' },
+        { name: 'Premium 1 yil', icon: '\ud83d\udc51', emojiId: '5468239023456722394' },
+        { name: '250 Stars', icon: '\u2b50', emojiId: '5468239023456722397' },
+        { name: '500 Stars', icon: '\u2b50', emojiId: '5468239023456722397' },
+        { name: '1000 Stars', icon: '\u2b50', emojiId: '5468239023456722397' },
+        { name: 'SalesNews NFT', icon: '\ud83c\udf81', emojiId: '5468239023456722399' }
     ];
 
     const capsule = document.createElement('div');
@@ -597,7 +582,7 @@ function initLiveOrdersTicker() {
         }
 
         capsule.classList.remove('is-visible');
-        iconEl.textContent = randomProd.icon;
+        iconEl.innerHTML = `<tg-emoji emoji-id="${randomProd.emojiId}">${randomProd.icon}</tg-emoji>`;
         titleEl.textContent = `Yangi xarid: @${randomUser}`;
         textEl.textContent = `${randomProd.name} olindi`;
 
