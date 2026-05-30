@@ -457,6 +457,10 @@ let currentRotationY = 0;
 let autoRotateActive = true;
 let radius = 230;
 
+function getCarouselStep() {
+    return 360 / admins.length;
+}
+
 function setupTeamCarousel() {
     const container = document.getElementById('carousel-container');
     if (!container) return;
@@ -529,7 +533,7 @@ function setupTeamCarousel() {
         card.addEventListener('click', (e) => {
             if (Math.abs(startX - (e.clientX || e.touches?.[0]?.clientX || 0)) > 5) return;
             const idx = parseInt(card.getAttribute('data-index'));
-            const targetAngle = -idx * 60;
+            const targetAngle = -idx * getCarouselStep();
             autoRotateActive = false;
             animateRotation(targetAngle);
             setTimeout(() => { autoRotateActive = true; }, 8000);
@@ -564,11 +568,12 @@ function updateCardsPosition() {
     const total = cards.length;
     if (total === 0) return;
 
-    const activeIdx = Math.round(-currAngle / 60) % total;
+    const stepAngle = 360 / total;
+    const activeIdx = Math.round(-currAngle / stepAngle) % total;
     const normalizedActiveIdx = activeIdx < 0 ? total + activeIdx : activeIdx;
 
     cards.forEach((card, i) => {
-        const cardAngle = i * 60;
+        const cardAngle = i * stepAngle;
         const currentCardRot = cardAngle + currAngle;
 
         card.style.transform = `rotateY(${currentCardRot}deg) translateZ(${radius}px) rotateY(${-currentCardRot}deg)`;
@@ -611,7 +616,7 @@ function dragEnd() {
     if (!isDragging) return;
     isDragging = false;
 
-    const targetAngle = Math.round(currAngle / 60) * 60;
+    const targetAngle = Math.round(currAngle / getCarouselStep()) * getCarouselStep();
     animateRotation(targetAngle);
 
     setTimeout(() => {
