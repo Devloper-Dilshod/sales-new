@@ -1,6 +1,267 @@
 
 import '@lottiefiles/lottie-player';
 
+const translations = {
+    uz: {
+        page_title: "SalesNews.uz - Telegram Premium, Stars va TON NFT",
+        meta_desc: "SalesNews.uz - Telegram Premium, Stars, garant forumlar va TON NFT havolalari.",
+        loading: "Yuklanmoqda...",
+        nav_home: "Bosh sahifa",
+        nav_eco: "Bizning Ekotizim",
+        nav_market: "Premium & NFT",
+        nav_team: "Jamoa / Adminlar",
+        badge_official: "SalesNews rasmiy sahifasi",
+        hero_desc: "Premium, Stars, garant forum va TON NFT havolalari bir joyda.",
+        uptime_label: "Faoliyat boshlaganimizga",
+        uptime_month: "Oy",
+        uptime_day: "Kun",
+        uptime_hour: "Soat",
+        eco_badge: "SalesNews Ekotizimi",
+        eco_title: "Telegram xizmatlari bir joyda",
+        eco_desc: "Premium, Stars, garant forum, bot va NFT havolalariga tez o'ting.",
+        eco_btn: "Ekotizim",
+        eco_kanal: "Kanal",
+        safe_badge: "100% Xavfsiz Ekotizim",
+        emoji_title: "Emojilar",
+        bot_title: "Premium Boti",
+        bot_desc: "Premium va Stars paketlarini bot orqali tez xarid qiling.",
+        btn_prices: "Narxlar",
+        garant_title: "Garant Forum",
+        garant_desc: "Savdolarni xavfsiz o'tkazish uchun garant forum.",
+        btn_forum: "Forumga o'tish",
+        nft_title: "TON NFT Kolleksiya",
+        nft_desc: "TON NFT emoji to'plamini GetGems'da ko'ring.",
+        hub_title: "Ekotizim havolalari",
+        hub_desc: "Rasmiy kanal, forum, guruhlar va Instagram.",
+        hub_main_channel: "Asosiy Kanal",
+        hub_forum: "Kafolatli Forum",
+        hub_chat: "Sales Muloqot Guruhi",
+        hub_ads: "Reklama Markazi",
+        hub_pubg: "PUBG Bozor Kanali",
+        hub_gift: "Gift OTC Forum",
+        hub_instagram: "Instagram",
+        btn_view: "Ko'rish",
+        market_title: "Bozor va Botlar",
+        market_desc: "Bot, Stars, Premium va TON NFT havolalari.",
+        nft_badge: "TON NFT Emoji Kolleksiyasi",
+        sticker_pack_title: "SalesNews Emojilar To'plami",
+        nft_collection_desc: "TON tarmog'idagi SalesNews emoji NFT to'plami.",
+        btn_getgems: "GetGems-da ko'rish",
+        bot_services_title: "Stars & Premium Xizmatlari",
+        bot_packages: "Botdagi asosiy paketlar:",
+        btn_buy_bot: "Botda xarid qilish",
+        team_title: "Jamoa va Adminlar",
+        team_desc: "Rasmiy adminlar va mas'ullar.",
+        mnav_home: "Bosh",
+        mnav_eco: "Eko",
+        mnav_market: "Bozor",
+        mnav_team: "Jamoa",
+        admin_write: "Yozish",
+        product_bot: "Botda"
+    },
+    ru: {
+        page_title: "SalesNews.uz - Telegram Premium, Stars и TON NFT",
+        meta_desc: "SalesNews.uz - Telegram Premium, Stars, гарант-форумы и ссылки TON NFT.",
+        loading: "Загрузка...",
+        nav_home: "Главная",
+        nav_eco: "Наша экосистема",
+        nav_market: "Premium & NFT",
+        nav_team: "Команда / Админы",
+        badge_official: "Официальная страница SalesNews",
+        hero_desc: "Premium, Stars, гарант-форум и TON NFT в одном месте.",
+        uptime_label: "Мы работаем уже",
+        uptime_month: "Мес.",
+        uptime_day: "Дней",
+        uptime_hour: "Часов",
+        eco_badge: "Экосистема SalesNews",
+        eco_title: "Telegram-сервисы в одном месте",
+        eco_desc: "Быстрый доступ к Premium, Stars, гарант-форуму, боту и NFT.",
+        eco_btn: "Экосистема",
+        eco_kanal: "Канал",
+        safe_badge: "100% безопасная экосистема",
+        emoji_title: "Эмодзи",
+        bot_title: "Premium Бот",
+        bot_desc: "Быстро покупайте Premium и Stars через бота.",
+        btn_prices: "Цены",
+        garant_title: "Гарант Форум",
+        garant_desc: "Гарант-форум для безопасных сделок.",
+        btn_forum: "Перейти в форум",
+        nft_title: "TON NFT Коллекция",
+        nft_desc: "Смотрите NFT-набор эмодзи TON на GetGems.",
+        hub_title: "Ссылки экосистемы",
+        hub_desc: "Официальный канал, форум, группы и Instagram.",
+        hub_main_channel: "Основной канал",
+        hub_forum: "Гарант Форум",
+        hub_chat: "Группа общения Sales",
+        hub_ads: "Рекламный центр",
+        hub_pubg: "PUBG маркет-канал",
+        hub_gift: "Gift OTC Форум",
+        hub_instagram: "Instagram",
+        btn_view: "Открыть",
+        market_title: "Маркет и боты",
+        market_desc: "Ссылки на бот, Stars, Premium и TON NFT.",
+        nft_badge: "TON NFT коллекция эмодзи",
+        sticker_pack_title: "Набор эмодзи SalesNews",
+        nft_collection_desc: "NFT-набор эмодзи SalesNews в сети TON.",
+        btn_getgems: "Открыть на GetGems",
+        bot_services_title: "Услуги Stars & Premium",
+        bot_packages: "Основные пакеты в боте:",
+        btn_buy_bot: "Купить в боте",
+        team_title: "Команда и админы",
+        team_desc: "Официальные админы и ответственные лица.",
+        mnav_home: "Глав",
+        mnav_eco: "Эко",
+        mnav_market: "Маркет",
+        mnav_team: "Команда",
+        admin_write: "Написать",
+        product_bot: "В боте"
+    },
+    en: {
+        page_title: "SalesNews.uz - Telegram Premium, Stars and TON NFT",
+        meta_desc: "SalesNews.uz - Telegram Premium, Stars, guarantor forums and TON NFT links.",
+        loading: "Loading...",
+        nav_home: "Home",
+        nav_eco: "Our Ecosystem",
+        nav_market: "Premium & NFT",
+        nav_team: "Team / Admins",
+        badge_official: "Official SalesNews page",
+        hero_desc: "Premium, Stars, guarantor forum and TON NFT links in one place.",
+        uptime_label: "Time since launch",
+        uptime_month: "Months",
+        uptime_day: "Days",
+        uptime_hour: "Hours",
+        eco_badge: "SalesNews Ecosystem",
+        eco_title: "Telegram services in one place",
+        eco_desc: "Quick access to Premium, Stars, guarantor forum, bot and NFT links.",
+        eco_btn: "Ecosystem",
+        eco_kanal: "Channel",
+        safe_badge: "100% Safe Ecosystem",
+        emoji_title: "Emojis",
+        bot_title: "Premium Bot",
+        bot_desc: "Buy Premium and Stars packages quickly through the bot.",
+        btn_prices: "Prices",
+        garant_title: "Guarantor Forum",
+        garant_desc: "A guarantor forum for safe deals.",
+        btn_forum: "Open forum",
+        nft_title: "TON NFT Collection",
+        nft_desc: "View the TON NFT emoji pack on GetGems.",
+        hub_title: "Ecosystem links",
+        hub_desc: "Official channel, forum, groups and Instagram.",
+        hub_main_channel: "Main Channel",
+        hub_forum: "Guarantor Forum",
+        hub_chat: "Sales Chat Group",
+        hub_ads: "Advertising Center",
+        hub_pubg: "PUBG Market Channel",
+        hub_gift: "Gift OTC Forum",
+        hub_instagram: "Instagram",
+        btn_view: "Open",
+        market_title: "Market and Bots",
+        market_desc: "Bot, Stars, Premium and TON NFT links.",
+        nft_badge: "TON NFT Emoji Collection",
+        sticker_pack_title: "SalesNews Emoji Pack",
+        nft_collection_desc: "SalesNews emoji NFT pack on the TON network.",
+        btn_getgems: "Open on GetGems",
+        bot_services_title: "Stars & Premium Services",
+        bot_packages: "Main packages in the bot:",
+        btn_buy_bot: "Buy in bot",
+        team_title: "Team and Admins",
+        team_desc: "Official admins and responsible team members.",
+        mnav_home: "Home",
+        mnav_eco: "Eco",
+        mnav_market: "Market",
+        mnav_team: "Team",
+        admin_write: "Message",
+        product_bot: "In bot"
+    }
+};
+
+const productDataByLang = {
+    uz: {
+        premium: [
+            { name: "Telegram Premium (3 oylik)", price: "95,000 UZS", label: "Sovg'a", icon: "🎁" },
+            { name: "Telegram Premium (6 oylik)", price: "165,000 UZS", label: "Hamyonbop", icon: "✨" },
+            { name: "Telegram Premium (12 oylik)", price: "290,000 UZS", label: "Eng zo'r narx", icon: "👑" }
+        ],
+        stars: [
+            { name: "50 Telegram Stars", price: "15,000 UZS", label: "Tezkor", icon: "⭐" },
+            { name: "100 Telegram Stars", price: "29,000 UZS", label: "Ommabop", icon: "⭐" },
+            { name: "250 Telegram Stars", price: "69,000 UZS", label: "Eng yaxshi", icon: "⭐" },
+            { name: "500 Telegram Stars", price: "135,000 UZS", label: "Ko'p sotilgan", icon: "⭐" },
+            { name: "1000 Telegram Stars", price: "260,000 UZS", label: "Katta paket", icon: "⭐" }
+        ]
+    },
+    ru: {
+        premium: [
+            { name: "Telegram Premium (3 месяца)", price: "95,000 UZS", label: "Подарок", icon: "🎁" },
+            { name: "Telegram Premium (6 месяцев)", price: "165,000 UZS", label: "Выгодно", icon: "✨" },
+            { name: "Telegram Premium (12 месяцев)", price: "290,000 UZS", label: "Лучшая цена", icon: "👑" }
+        ],
+        stars: [
+            { name: "50 Telegram Stars", price: "15,000 UZS", label: "Быстро", icon: "⭐" },
+            { name: "100 Telegram Stars", price: "29,000 UZS", label: "Популярно", icon: "⭐" },
+            { name: "250 Telegram Stars", price: "69,000 UZS", label: "Лучший выбор", icon: "⭐" },
+            { name: "500 Telegram Stars", price: "135,000 UZS", label: "Хит продаж", icon: "⭐" },
+            { name: "1000 Telegram Stars", price: "260,000 UZS", label: "Большой пакет", icon: "⭐" }
+        ]
+    },
+    en: {
+        premium: [
+            { name: "Telegram Premium (3 months)", price: "95,000 UZS", label: "Gift", icon: "🎁" },
+            { name: "Telegram Premium (6 months)", price: "165,000 UZS", label: "Best value", icon: "✨" },
+            { name: "Telegram Premium (12 months)", price: "290,000 UZS", label: "Top price", icon: "👑" }
+        ],
+        stars: [
+            { name: "50 Telegram Stars", price: "15,000 UZS", label: "Fast", icon: "⭐" },
+            { name: "100 Telegram Stars", price: "29,000 UZS", label: "Popular", icon: "⭐" },
+            { name: "250 Telegram Stars", price: "69,000 UZS", label: "Best pick", icon: "⭐" },
+            { name: "500 Telegram Stars", price: "135,000 UZS", label: "Best seller", icon: "⭐" },
+            { name: "1000 Telegram Stars", price: "260,000 UZS", label: "Large pack", icon: "⭐" }
+        ]
+    }
+};
+
+let activeLang = localStorage.getItem('salesnews_lang') || 'uz';
+let currentProductCategory = 'premium';
+
+function t(key) {
+    return translations[activeLang]?.[key] || translations.uz[key] || key;
+}
+
+function applyTranslations() {
+    const dictionary = translations[activeLang] || translations.uz;
+    document.documentElement.lang = activeLang;
+    document.title = dictionary.page_title;
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (metaDescription) metaDescription.setAttribute('content', dictionary.meta_desc);
+    if (ogDescription) ogDescription.setAttribute('content', dictionary.hero_desc);
+
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (dictionary[key]) el.textContent = dictionary[key];
+    });
+
+    document.querySelectorAll('.lang-btn, .lang-btn-m').forEach((btn) => {
+        const isActive = btn.id === `lang-${activeLang}` || btn.id === `lang-${activeLang}-m`;
+        btn.classList.toggle('lang-active', isActive && btn.classList.contains('lang-btn'));
+        btn.classList.toggle('lang-active-m', isActive && btn.classList.contains('lang-btn-m'));
+    });
+
+    document.querySelectorAll('#lang-select, #lang-select-m').forEach((select) => {
+        select.value = activeLang;
+    });
+}
+
+window.setLang = function setLang(lang) {
+    if (!translations[lang]) return;
+    activeLang = lang;
+    localStorage.setItem('salesnews_lang', lang);
+    applyTranslations();
+    renderProducts(currentProductCategory);
+    setupTeamCarousel();
+};
+
 function initUptimeCounter() {
     const startDate = new Date('2025-06-18T00:00:00+05:00');
 
@@ -102,7 +363,7 @@ class TgEmoji extends HTMLElement {
 customElements.define('tg-emoji', TgEmoji);
 
 const admins = [
-    { username: 'xolid', name: 'Xolid', role: 'Ega', color: 'from-orange-400 to-red-500', text: 'Ega' },
+    { username: 'xolid', name: 'Xolid', role: 'Ega', color: 'from-violet-500 to-emerald-400', text: 'Ega', owner: true },
     { username: 'tonchivoy', name: 'Jack', role: 'Admin', color: 'from-blue-400 to-indigo-500', text: 'Admin' },
     { username: 'jama_0432', name: 'Jama', role: 'Admin', color: 'from-emerald-400 to-teal-600', text: 'Admin' },
     { username: 'bbaxttt', name: 'Baxt', role: 'Admin', color: 'from-rose-400 to-pink-500', text: 'Admin' },
@@ -133,13 +394,17 @@ function setupTeamCarousel() {
 
     admins.forEach((admin, i) => {
         const card = document.createElement('div');
-        card.className = 'carousel-card flex flex-col items-center justify-between p-3.5 cursor-pointer select-none';
+        card.className = `carousel-card flex flex-col items-center justify-between p-3.5 cursor-pointer select-none ${admin.owner ? 'owner-card' : ''}`;
         card.setAttribute('data-index', i);
         const initials = admin.name.substring(0, 2).toUpperCase();
         const directAvatarUrl = `https://t.me/i/userpic/320/${admin.username}.jpg`;
+        const badgeClass = admin.owner
+            ? 'owner-role-badge'
+            : 'bg-tggreen-neon/10 text-tggreen-neon border border-tggreen-neon/20';
+        const nameClass = admin.owner ? 'owner-name' : 'text-slate-800';
         card.innerHTML = `
             <div class="w-full flex items-center justify-between">
-                <span class="px-1.5 py-0.5 text-[8px] font-extrabold rounded bg-tggreen-neon/10 text-tggreen-neon border border-tggreen-neon/20">
+                <span class="px-1.5 py-0.5 text-[8px] font-extrabold rounded ${badgeClass}">
                     ${admin.text}
                 </span>
                 <i class="fab fa-telegram text-tgblue text-xs"></i>
@@ -152,13 +417,13 @@ function setupTeamCarousel() {
                          onerror="this.style.display='none'" />
                     <span class="text-xs md:text-sm font-black text-white tracking-wider">${initials}</span>
                 </div>
-                <h3 class="font-bold text-[10px] md:text-xs text-slate-800 leading-tight">${admin.name}</h3>
+                <h3 class="font-bold text-[10px] md:text-xs ${nameClass} leading-tight">${admin.name}</h3>
                 <span class="text-[8px] md:text-[9px] text-slate-500 font-medium">@${admin.username}</span>
             </div>
             <a href="https://t.me/${admin.username}"
                target="_blank"
                class="w-full text-center py-1 md:py-1.5 px-2 rounded-lg bg-tgblue/10 hover:bg-tgblue/20 border border-tgblue/15 text-tgblue text-[8px] md:text-[9px] font-extrabold transition-all duration-300">
-                Yozish <i class="fas fa-paper-plane ml-0.5"></i>
+                ${t('admin_write')} <i class="fas fa-paper-plane ml-0.5"></i>
             </a>
         `;
         container.appendChild(card);
@@ -278,27 +543,13 @@ function autoRotateLoop() {
     requestAnimationFrame(autoRotateLoop);
 }
 
-const productsData = {
-    premium: [
-        { name: "Telegram Premium (3 oylik)", price: "95,000 UZS", label: "Sovg'a", icon: "🎁" },
-        { name: "Telegram Premium (6 oylik)", price: "165,000 UZS", label: "Hamyonbop", icon: "✨" },
-        { name: "Telegram Premium (12 oylik)", price: "290,000 UZS", label: "Eng zo'r narx", icon: "👑" }
-    ],
-    stars: [
-        { name: "50 Telegram Stars", price: "15,000 UZS", label: "Tezkor", icon: "⭐" },
-        { name: "100 Telegram Stars", price: "29,000 UZS", label: "Ommabop", icon: "⭐" },
-        { name: "250 Telegram Stars", price: "69,000 UZS", label: "Eng yaxshi", icon: "⭐" },
-        { name: "500 Telegram Stars", price: "135,000 UZS", label: "Ko'p sotilgan", icon: "⭐" },
-        { name: "1000 Telegram Stars", price: "260,000 UZS", label: "Katta paket", icon: "⭐" }
-    ]
-};
-
 function renderProducts(category) {
     const view = document.getElementById('products-view');
     if (!view) return;
 
     view.innerHTML = '';
-    const items = productsData[category] || [];
+    currentProductCategory = category;
+    const items = productDataByLang[activeLang]?.[category] || productDataByLang.uz[category] || [];
 
     items.forEach(item => {
         const itemDiv = document.createElement('div');
@@ -313,7 +564,7 @@ function renderProducts(category) {
                 </div>
             </div>
             <span class="text-[8.5px] text-tgpremium bg-tgpremium/10 px-2 py-0.5 rounded-md font-extrabold uppercase tracking-wider flex items-center gap-1 transition-all hover:bg-tgpremium hover:text-white border border-tgpremium/10">
-                Botda <i class="fab fa-telegram-plane"></i>
+                ${t('product_bot')} <i class="fab fa-telegram-plane"></i>
             </span>
         `;
         view.appendChild(itemDiv);
@@ -552,6 +803,7 @@ function hideLoader() {
 }
 
 function startApp() {
+    applyTranslations();
     initUptimeCounter();
     createBackgroundParticles();
     initNavigation();
