@@ -1270,3 +1270,45 @@ lottie-player {
 
 
 }
+
+@media (max-width: 767px) {
+    .mesh-container,
+    #particles-container {
+        display: none !important;
+    }
+
+    .carousel-card::before,
+    .btn-premium::after,
+    .channel-premium-badge::before,
+    .carousel-stage::before {
+        display: none !important;
+    }
+
+    .carousel-core,
+    .premium-emoji,
+    .premium-emoji.lottie-emoji-badge,
+    .channel-premium-badge,
+    .animate-loader-bounce,
+    .animate-loader-glow,
+    .animate-shimmer-text,
+    .animate-loader-bar {
+        animation: none !important;
+    }
+
+    .page-section.active {
+        animation: none !important;
+    }
+
+    .glass-panel,
+    .carousel-card,
+    .premium-emoji,
+    .premium-emoji.lottie-emoji-badge,
+    .btn-premium {
+        transition-duration: 0.15s !important;
+    }
+
+    .carousel-card:not(.active) {
+        filter: brightness(0.98);
+        opacity: 0.92;
+    }
+}

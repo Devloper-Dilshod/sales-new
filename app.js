@@ -374,6 +374,19 @@ function initThemeToggle() {
     });
 }
 
+function optimizeMotionForMobile() {
+    if (!shouldUseReducedMotion()) return;
+
+    window.setTimeout(() => {
+        document.querySelectorAll('lottie-player').forEach((player, index) => {
+            player.setAttribute('speed', '0.6');
+            if (index > 2 && typeof player.pause === 'function') {
+                player.pause();
+            }
+        });
+    }, 900);
+}
+
 function initUptimeCounter() {
     const startDate = new Date('2025-06-18T00:00:00+05:00');
 
@@ -492,6 +505,10 @@ let currentRotationY = 0;
 let autoRotateActive = true;
 let radius = 230;
 let activePointerId = null;
+
+function shouldUseReducedMotion() {
+    return window.innerWidth < 768 || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
 
 function getCarouselStep() {
     return 360 / admins.length;
@@ -683,11 +700,16 @@ function dragEnd(e) {
 }
 
 function autoRotateLoop() {
-    if (autoRotateActive && !isDragging && document.getElementById('team-page')?.classList.contains('active')) {
+    if (!shouldUseReducedMotion() && autoRotateActive && !isDragging && document.getElementById('team-page')?.classList.contains('active')) {
         currAngle -= 0.12;
         updateCardsPosition();
     }
-    requestAnimationFrame(autoRotateLoop);
+
+    if (shouldUseReducedMotion()) {
+        setTimeout(autoRotateLoop, 250);
+    } else {
+        requestAnimationFrame(autoRotateLoop);
+    }
 }
 
 function renderProducts(category) {
@@ -743,11 +765,11 @@ function initShopWidget() {
 }
 
 function createBackgroundParticles() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (shouldUseReducedMotion() || window.innerWidth < 1024) return;
 
     const container = document.getElementById('particles-container') || document.body;
     const colors = ['rgba(0, 255, 102, 0.04)', 'rgba(0, 152, 234, 0.03)', 'rgba(142, 45, 226, 0.03)'];
-    const limit = window.innerWidth < 768 ? 3 : 6;
+    const limit = 4;
 
     for (let i = 0; i < limit; i++) {
         const particle = document.createElement('div');
@@ -876,6 +898,14 @@ function initStickerShowcase() {
     const p1 = document.getElementById('showcase-anim-1');
     const p2 = document.getElementById('showcase-anim-2');
     if (!p1 || !p2) return;
+
+    if (shouldUseReducedMotion()) {
+        p1.style.opacity = '1';
+        p1.style.transform = 'scale(1)';
+        p2.style.opacity = '0';
+        p2.style.transform = 'scale(0.85)';
+        return;
+    }
 
     const stickerAssets = [
         './stickers/0_0.json',
@@ -1021,6 +1051,7 @@ function startApp() {
     initShopWidget();
     setupTeamCarousel();
     initStickerShowcase();
+    optimizeMotionForMobile();
     autoRotateLoop();
 
     if (!localStorage.getItem('salesnews_lang_by_user')) {
