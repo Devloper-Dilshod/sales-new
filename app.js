@@ -279,10 +279,13 @@ function applyTranslations() {
     });
 }
 
-window.setLang = function setLang(lang) {
+window.setLang = function setLang(lang, isUserAction = false) {
     if (!translations[lang]) return;
     activeLang = lang;
     localStorage.setItem('salesnews_lang', lang);
+    if (isUserAction) {
+        localStorage.setItem('salesnews_lang_by_user', 'true');
+    }
     applyTranslations();
     renderProducts(currentProductCategory);
     setupTeamCarousel();
@@ -302,7 +305,7 @@ function initLanguageMenus() {
         menu.querySelectorAll('[data-lang-option]').forEach((option) => {
             option.addEventListener('click', (event) => {
                 event.stopPropagation();
-                window.setLang(option.getAttribute('data-lang-option'));
+                window.setLang(option.getAttribute('data-lang-option'), true);
                 menu.classList.remove('open');
                 trigger.setAttribute('aria-expanded', 'false');
             });
@@ -903,7 +906,7 @@ function startApp() {
     initStickerShowcase();
     autoRotateLoop();
 
-    if (!localStorage.getItem('salesnews_lang')) {
+    if (!localStorage.getItem('salesnews_lang_by_user')) {
         detectLanguageByIP();
     }
 
