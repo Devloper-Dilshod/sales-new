@@ -452,10 +452,12 @@ const admins = [
 
 let currAngle = 0;
 let isDragging = false;
+let hasDragged = false;
 let startX = 0;
 let currentRotationY = 0;
 let autoRotateActive = true;
 let radius = 230;
+let activePointerId = null;
 
 function getCarouselStep() {
     return 360 / admins.length;
@@ -520,18 +522,24 @@ function setupTeamCarousel() {
     updateCardsPosition();
 
     if (!container.getAttribute('data-initialized')) {
-        container.addEventListener('mousedown', dragStart);
-        window.addEventListener('mousemove', dragMove);
-        window.addEventListener('mouseup', dragEnd);
-        container.addEventListener('touchstart', dragStart, { passive: true });
-        window.addEventListener('touchmove', dragMove, { passive: false });
-        window.addEventListener('touchend', dragEnd);
+        container.addEventListener('pointerdown', dragStart);
+        container.addEventListener('pointermove', dragMove);
+        container.addEventListener('pointerup', dragEnd);
+        container.addEventListener('pointercancel', dragEnd);
+        container.addEventListener('lostpointercapture', dragEnd);
         container.setAttribute('data-initialized', 'true');
     }
 
     container.querySelectorAll('.carousel-card').forEach(card => {
         card.addEventListener('click', (e) => {
-            if (Math.abs(startX - (e.clientX || e.touches?.[0]?.clientX || 0)) > 5) return;
+            if (hasDragged) {
+                e.preventDefault();
+                e.stopPropagation();
+                return;
+            }
+
+            if (e.target.closest('a')) return;
+
             const idx = parseInt(card.getAttribute('data-index'));
             const targetAngle = -idx * getCarouselStep();
             autoRotateActive = false;
@@ -591,30 +599,42 @@ function updateCardsPosition() {
 }
 
 function dragStart(e) {
+    if (e.button !== undefined && e.button !== 0) return;
+
     isDragging = true;
+    hasDragged = false;
     autoRotateActive = false;
-    startX = e.clientX || e.touches?.[0]?.clientX || 0;
+    activePointerId = e.pointerId;
+    e.currentTarget.setPointerCapture?.(activePointerId);
+    startX = e.clientX || 0;
     currentRotationY = currAngle;
 }
 
 function dragMove(e) {
+    if (activePointerId !== null && e.pointerId !== activePointerId) return;
     if (!isDragging) return;
 
-    if (e.touches && e.cancelable) {
+    if (e.cancelable) {
         e.preventDefault();
     }
 
-    const clientX = e.clientX || e.touches?.[0]?.clientX || 0;
+    const clientX = e.clientX || 0;
     const deltaX = clientX - startX;
     const sensitivity = 0.25;
+
+    if (Math.abs(deltaX) > 5) {
+        hasDragged = true;
+    }
 
     currAngle = currentRotationY + deltaX * sensitivity;
     updateCardsPosition();
 }
 
-function dragEnd() {
+function dragEnd(e) {
+    if (activePointerId !== null && e?.pointerId !== undefined && e.pointerId !== activePointerId) return;
     if (!isDragging) return;
     isDragging = false;
+    activePointerId = null;
 
     const targetAngle = Math.round(currAngle / getCarouselStep()) * getCarouselStep();
     animateRotation(targetAngle);
@@ -622,6 +642,10 @@ function dragEnd() {
     setTimeout(() => {
         if (!isDragging) autoRotateActive = true;
     }, 6000);
+
+    setTimeout(() => {
+        hasDragged = false;
+    }, 0);
 }
 
 function autoRotateLoop() {
