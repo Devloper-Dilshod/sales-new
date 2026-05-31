@@ -63,14 +63,6 @@ body[data-performance="low"]::before {
     display: none;
 }
 
-body[data-performance="low"] .static-logo {
-    display: block;
-}
-
-body[data-performance="low"] lottie-player {
-    display: none !important;
-}
-
 body[data-performance="low"] .glass-panel,
 body[data-performance="low"] .desktop-header,
 body[data-performance="low"] .mobile-bottom-nav,

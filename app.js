@@ -377,9 +377,10 @@ function optimizeMotionForMobile() {
     document.body.classList.add('performance-mode');
 
     window.setTimeout(() => {
-        document.querySelectorAll('lottie-player').forEach((player, index) => {
-            player.setAttribute('speed', '0.6');
-            if (index > 2 && typeof player.pause === 'function') {
+        document.querySelectorAll('lottie-player').forEach((player) => {
+            const isPremiumAsset = player.closest('tg-emoji, .premium-emoji, .sticker-mockup-emoji, .channel-premium-badge, #showcase-anim-1, #showcase-anim-2');
+            player.setAttribute('speed', isPremiumAsset ? '1' : '0.6');
+            if (!isPremiumAsset && typeof player.pause === 'function') {
                 player.pause();
             }
         });
@@ -512,8 +513,6 @@ function shouldUseReducedMotion() {
 }
 
 async function initLottieRuntime() {
-    if (shouldUseReducedMotion()) return;
-
     try {
         await import('@lottiefiles/lottie-player');
     } catch (error) {
