@@ -190,6 +190,134 @@ const translations = {
         eco_feat2_desc: "Secure transactions via guarantor forum",
         eco_feat3_title: "24/7 Active Support",
         eco_feat3_desc: "Qualified admins are always ready to help"
+    },
+    zh: {
+        page_title: "SalesNews.uz - Sales Master, Telegram Premium, Stars, TON NFT 和担保服务",
+        meta_desc: "SalesNews.uz - Sales Master 群组, @xolid, @sales_master, @rijol, @yevropa, @uchar, @rejissor, @oshiq, @hattob, @shaxs, @kelishgan, Telegram Premium, Stars, TON NFT, GetGems 表情包, 担保论坛和官方 Sales 生态系统。",
+        loading: "加载中...",
+        nav_home: "首页",
+        nav_eco: "我们的生态系统",
+        nav_market: "Premium 和 NFT",
+        nav_team: "团队 / 管理员",
+        badge_official: "SalesNews 官方页面",
+        hero_desc: "Sales Master 群组、Premium、Stars、担保论坛和 TON NFT 链接一站式获取。",
+        uptime_label: "已安全运行",
+        uptime_month: "月",
+        uptime_day: "天",
+        uptime_hour: "小时",
+        eco_badge: "SalesNews 生态系统",
+        eco_title: "一站式 Telegram 服务",
+        eco_desc: "快速访问 Premium、Stars、担保论坛、机器人和 NFT 链接。",
+        eco_btn: "生态系统",
+        eco_kanal: "频道",
+        safe_badge: "100% 安全的生态系统",
+        emoji_title: "表情符号",
+        bot_title: "Premium 机器人",
+        bot_desc: "通过机器人快速购买 Premium 和 Stars 礼包。",
+        btn_prices: "价格",
+        garant_title: "担保论坛",
+        garant_desc: "用于安全交易的担保论坛。",
+        btn_forum: "前往论坛",
+        nft_title: "TON NFT 收藏",
+        nft_desc: "在 GetGems 上查看 TON NFT 表情包收藏。",
+        hub_title: "生态系统链接",
+        hub_desc: "官方频道、论坛、群组和 Instagram。",
+        hub_main_channel: "Sales News",
+        hub_forum: "Sales Garant",
+        hub_chat: "Sales Chat",
+        hub_ads: "Sales Reklama",
+        hub_pubg: "Sales Pubg",
+        hub_gift: "Gift OTC",
+        hub_instagram: "Sales Instagram",
+        hub_youtube: "Sales YouTube",
+        btn_view: "打开",
+        market_title: "市场和机器人",
+        market_desc: "机器人、Stars、Premium 和 TON NFT 链接。",
+        nft_badge: "TON NFT 贴纸系列",
+        sticker_pack_title: "Sales News 贴纸包",
+        nft_collection_desc: "TON 网络上的 SalesNews 表情包 NFT 集合。",
+        btn_getgems: "在 GetGems 上查看",
+        bot_services_title: "Stars 和 Premium 服务",
+        bot_packages: "机器人中的主要包：",
+        btn_buy_bot: "在机器人中购买",
+        team_title: "团队和管理员",
+        team_desc: "官方管理员和负责人。",
+        mnav_home: "首页",
+        mnav_eco: "生态",
+        mnav_market: "市场",
+        mnav_team: "团队",
+        admin_write: "私信",
+        product_bot: "在机器人中",
+        eco_feat1_title: "极速交付",
+        eco_feat1_desc: "订单在 5-15 分钟内处理完成",
+        eco_feat2_title: "100% 安全担保",
+        eco_feat2_desc: "通过担保论坛进行安全交易",
+        eco_feat3_title: "24/7 活跃支持",
+        eco_feat3_desc: "专业管理员随时为您提供帮助"
+    },
+    ko: {
+        page_title: "SalesNews.uz - Sales Master, Telegram Premium, Stars, TON NFT 및 보증 서비스",
+        meta_desc: "SalesNews.uz - Sales Master 그룹, @xolid, @sales_master, @rijol, @yevropa, @uchar, @rejissor, @oshiq, @hattob, @shaxs, @kelishgan, Telegram Premium, Stars, TON NFT, GetGems 이모지, 보증 포럼 및 공식 Sales 생태계.",
+        loading: "로딩 중...",
+        nav_home: "홈",
+        nav_eco: "우리 생태계",
+        nav_market: "Premium & NFT",
+        nav_team: "팀 / 관리자",
+        badge_official: "SalesNews 공식 페이지",
+        hero_desc: "Sales Master 그룹, Premium, Stars, 보증 포럼 및 TON NFT 링크를 한곳에서 확인하세요.",
+        uptime_label: "운영 시간",
+        uptime_month: "개월",
+        uptime_day: "일",
+        uptime_hour: "시간",
+        eco_badge: "SalesNews 생태계",
+        eco_title: "텔레그램 서비스 한곳에",
+        eco_desc: "Premium, Stars, 보증 포럼, 봇 및 NFT 링크에 빠르게 접속하세요.",
+        eco_btn: "생태계",
+        eco_kanal: "채널",
+        safe_badge: "100% 안전한 생태계",
+        emoji_title: "이모지",
+        bot_title: "Premium 봇",
+        bot_desc: "봇을 통해 Premium 및 Stars 패키지를 빠르게 구매하세요.",
+        btn_prices: "가격",
+        garant_title: "보증 포럼",
+        garant_desc: "안전한 거래를 위한 보증 포럼.",
+        btn_forum: "포럼으로 이동",
+        nft_title: "TON NFT 컬렉션",
+        nft_desc: "GetGems에서 TON NFT 이모지 팩을 확인하세요.",
+        hub_title: "생태계 링크",
+        hub_desc: "공식 채널, 포럼, 그룹 및 Instagram.",
+        hub_main_channel: "Sales News",
+        hub_forum: "Sales Garant",
+        hub_chat: "Sales Chat",
+        hub_ads: "Sales Reklama",
+        hub_pubg: "Sales Pubg",
+        hub_gift: "Gift OTC",
+        hub_instagram: "Sales Instagram",
+        hub_youtube: "Sales YouTube",
+        btn_view: "열기",
+        market_title: "마켓 및 봇",
+        market_desc: "봇, Stars, Premium 및 TON NFT 링크.",
+        nft_badge: "TON NFT 스티커 컬렉션",
+        sticker_pack_title: "Sales News 스티커 팩",
+        nft_collection_desc: "TON 네트워크의 SalesNews 이모지 NFT 팩.",
+        btn_getgems: "GetGems에서 보기",
+        bot_services_title: "Stars & Premium 서비스",
+        bot_packages: "봇의 주요 패키지:",
+        btn_buy_bot: "봇에서 구매",
+        team_title: "팀 및 관리자",
+        team_desc: "공식 관리자 및 담당자.",
+        mnav_home: "홈",
+        mnav_eco: "에코",
+        mnav_market: "마켓",
+        mnav_team: "팀",
+        admin_write: "메시지",
+        product_bot: "봇에서",
+        eco_feat1_title: "빠른 배송",
+        eco_feat1_desc: "주문은 5-15분 이내에 처리됩니다",
+        eco_feat2_title: "100% 안전한 보증",
+        eco_feat2_desc: "보증 포럼을 통한 안전한 거래",
+        eco_feat3_title: "24/7 활성 지원",
+        eco_feat3_desc: "전문 관리자가 항상 도울 준비가 되어 있습니다"
     }
 };
 
@@ -235,6 +363,34 @@ const productDataByLang = {
             { name: "500 Telegram Stars", price: "135,000 UZS", label: "Best seller", icon: "⭐" },
             { name: "1000 Telegram Stars", price: "260,000 UZS", label: "Large pack", icon: "⭐" }
         ]
+    },
+    zh: {
+        premium: [
+            { name: "Telegram Premium (3个月)", price: "95,000 UZS", label: "礼物", icon: "🎁" },
+            { name: "Telegram Premium (6个月)", price: "165,000 UZS", label: "超值", icon: "✨" },
+            { name: "Telegram Premium (12个月)", price: "290,000 UZS", label: "最佳价格", icon: "👑" }
+        ],
+        stars: [
+            { name: "50 Telegram Stars", price: "15,000 UZS", label: "极速", icon: "⭐" },
+            { name: "100 Telegram Stars", price: "29,000 UZS", label: "热门", icon: "⭐" },
+            { name: "250 Telegram Stars", price: "69,000 UZS", label: "推荐", icon: "⭐" },
+            { name: "500 Telegram Stars", price: "135,000 UZS", label: "畅销", icon: "⭐" },
+            { name: "1000 Telegram Stars", price: "260,000 UZS", label: "超值大包", icon: "⭐" }
+        ]
+    },
+    ko: {
+        premium: [
+            { name: "Telegram Premium (3개월)", price: "95,000 UZS", label: "선물", icon: "🎁" },
+            { name: "Telegram Premium (6개월)", price: "165,000 UZS", label: "가성비", icon: "✨" },
+            { name: "Telegram Premium (12개월)", price: "290,000 UZS", label: "최고의 가격", icon: "👑" }
+        ],
+        stars: [
+            { name: "50 Telegram Stars", price: "15,000 UZS", label: "신속", icon: "⭐" },
+            { name: "100 Telegram Stars", price: "29,000 UZS", label: "인기", icon: "⭐" },
+            { name: "250 Telegram Stars", price: "69,000 UZS", label: "추천", icon: "⭐" },
+            { name: "500 Telegram Stars", price: "135,000 UZS", label: "베스트셀러", icon: "⭐" },
+            { name: "1000 Telegram Stars", price: "260,000 UZS", label: "대형 패키지", icon: "⭐" }
+        ]
     }
 };
 
@@ -244,7 +400,9 @@ let currentProductCategory = 'premium';
 const languageOptions = {
     uz: { short: 'UZ', label: "O'zbek", flag: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 36 24%22%3E%3Cpath fill=%22%231eb6e8%22 d=%22M0 0h36v8H0z%22/%3E%3Cpath fill=%22%23fff%22 d=%22M0 8h36v8H0z%22/%3E%3Cpath fill=%22%2325b34b%22 d=%22M0 16h36v8H0z%22/%3E%3Cpath fill=%22%23ce1126%22 d=%22M0 7h36v1H0zM0 16h36v1H0z%22/%3E%3Ccircle cx=%226%22 cy=%224%22 r=%222.4%22 fill=%22%23fff%22/%3E%3Ccircle cx=%227%22 cy=%224%22 r=%222.4%22 fill=%22%231eb6e8%22/%3E%3Cg fill=%22%23fff%22%3E%3Ccircle cx=%2212%22 cy=%222%22 r=%22.45%22/%3E%3Ccircle cx=%2215%22 cy=%222%22 r=%22.45%22/%3E%3Ccircle cx=%2218%22 cy=%222%22 r=%22.45%22/%3E%3Ccircle cx=%2212%22 cy=%224%22 r=%22.45%22/%3E%3Ccircle cx=%2215%22 cy=%224%22 r=%22.45%22/%3E%3Ccircle cx=%2218%22 cy=%224%22 r=%22.45%22/%3E%3Ccircle cx=%2212%22 cy=%226%22 r=%22.45%22/%3E%3Ccircle cx=%2215%22 cy=%226%22 r=%22.45%22/%3E%3Ccircle cx=%2218%22 cy=%226%22 r=%22.45%22/%3E%3C/g%3E%3C/svg%3E' },
     ru: { short: 'RU', label: 'Русский', flag: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 36 24%22%3E%3Cpath fill=%22%23fff%22 d=%22M0 0h36v8H0z%22/%3E%3Cpath fill=%22%230039a6%22 d=%22M0 8h36v8H0z%22/%3E%3Cpath fill=%22%23d52b1e%22 d=%22M0 16h36v8H0z%22/%3E%3C/svg%3E' },
-    en: { short: 'EN', label: 'English', flag: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 36 24%22%3E%3Cpath fill=%22%23012169%22 d=%22M0 0h36v24H0z%22/%3E%3Cpath stroke=%22%23fff%22 stroke-width=%225%22 d=%22m0 0 36 24M36 0 0 24%22/%3E%3Cpath stroke=%22%23C8102E%22 stroke-width=%223%22 d=%22m0 0 36 24M36 0 0 24%22/%3E%3Cpath stroke=%22%23fff%22 stroke-width=%228%22 d=%22M18 0v24M0 12h36%22/%3E%3Cpath stroke=%22%23C8102E%22 stroke-width=%225%22 d=%22M18 0v24M0 12h36%22/%3E%3C/svg%3E' }
+    en: { short: 'EN', label: 'English', flag: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 36 24%22%3E%3Cpath fill=%22%23012169%22 d=%22M0 0h36v24H0z%22/%3E%3Cpath stroke=%22%23fff%22 stroke-width=%225%22 d=%22m0 0 36 24M36 0 0 24%22/%3E%3Cpath stroke=%22%23C8102E%22 stroke-width=%223%22 d=%22m0 0 36 24M36 0 0 24%22/%3E%3Cpath stroke=%22%23fff%22 stroke-width=%228%22 d=%22M18 0v24M0 12h36%22/%3E%3Cpath stroke=%22%23C8102E%22 stroke-width=%225%22 d=%22M18 0v24M0 12h36%22/%3E%3C/svg%3E' },
+    zh: { short: 'ZH', label: '中文', flag: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 36 24%22%3E%3Crect width=%2236%22 height=%2224%22 fill=%22%23de2910%22/%3E%3Cpath d=%22M6 6l-.6 1.8h-1.9l1.5 1.1-.6 1.8 1.6-1.1 1.5 1.1-.6-1.8 1.5-1.1H6.6zM10.8 2.4l.3.9h1l-.8.6.3.9-.8-.6-.8.6.3-.9-.8-.6h1zM13.2 5.4l.3.9h1l-.8.6.3.9-.8-.6-.8.6.3-.9-.8-.6h1zM13.2 9l.3.9h1l-.8.6.3.9-.8-.6-.8.6.3-.9-.8-.6h1zM10.8 12l.3.9h1l-.8.6.3.9-.8-.6-.8.6.3-.9-.8-.6h1z%22 fill=%22%23ffde00%22/%3E%3C/svg%3E' },
+    ko: { short: 'KO', label: '한국어', flag: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 36 24%22%3E%3Crect width=%2236%22 height=%2224%22 fill=%22%23ffffff%22/%3E%3Cg transform=%22translate(18,12) rotate(-33.69)%22%3E%3Ccircle cx=%220%22 cy=%220%22 r=%225%22 fill=%22%230047a0%22/%3E%3Cpath d=%22M0,-5 A 2.5,2.5 0 0,1 0,0 A 2.5,2.5 0 0,0 0,5 A 5,5 0 0,0 0,-5%22 fill=%22%23cd2e3a%22/%3E%3C/g%3E%3Cg stroke=%22%23000000%22 stroke-width=%221%22 fill=%22none%22%3E%3Cpath d=%22M 7,5 L 11,9 M 8,4 L 12,8 M 9,3 L 13,7%22/%3E%3Cpath d=%22M 29,5 L 25,9 M 28,4 L 24,8 M 27,3 L 23,7%22/%3E%3Cpath d=%22M 7,19 L 11,15 M 8,20 L 12,16 M 9,21 L 13,17%22/%3E%3Cpath d=%22M 29,19 L 25,15 M 28,20 L 24,16 M 27,21 L 23,17%22/%3E%3C/g%3E%3C/svg%3E' }
 };
 
 function t(key) {
@@ -1018,6 +1176,10 @@ async function detectLanguageByIP() {
             detectedLang = 'uz';
         } else if (countryCode === 'RU') {
             detectedLang = 'ru';
+        } else if (countryCode === 'CN') {
+            detectedLang = 'zh';
+        } else if (countryCode === 'KR') {
+            detectedLang = 'ko';
         }
         window.setLang(detectedLang);
     }
