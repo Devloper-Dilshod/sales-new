@@ -416,6 +416,13 @@ body[data-theme="dark"] .seo-handle-cloud a {
     box-shadow: 0 0 8px rgba(15, 23, 42, 0.12);
 }
 
+.blue-role-badge {
+    color: #3b82f6;
+    background: #ffffff;
+    border: 1px solid rgba(59, 130, 246, 0.6);
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.12);
+}
+
 .carousel-card.owner-card {
     border-color: rgba(139, 92, 246, 0.6);
 }
@@ -432,6 +439,15 @@ body[data-theme="dark"] .seo-handle-cloud a {
 .carousel-card.jack-card.active {
     border-color: rgba(15, 23, 42, 0.88);
     box-shadow: 0 15px 30px -5px rgba(15, 23, 42, 0.14);
+}
+
+.carousel-card.blue-card {
+    border-color: rgba(59, 130, 246, 0.6);
+}
+
+.carousel-card.blue-card.active {
+    border-color: rgba(59, 130, 246, 0.88);
+    box-shadow: 0 15px 30px -5px rgba(59, 130, 246, 0.14);
 }
 
 .carousel-card:not(.active) {

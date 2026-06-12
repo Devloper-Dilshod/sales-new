@@ -665,7 +665,8 @@ const admins = [
     { username: 'bbaxttt', name: 'Baxt', role: 'Admin', color: 'from-rose-400 to-pink-500', text: 'Admin' },
     { username: 'umarbe', name: 'Umar', role: 'Admin', color: 'from-amber-400 to-orange-500', text: 'Admin' },
     { username: 'kafilhub', name: 'Abdulloh', role: 'Admin', color: 'from-purple-400 to-violet-600', text: 'Admin' },
-    { username: 'kaylora', name: 'Kaylora', role: 'Admin', color: 'from-cyan-400 to-blue-500', text: 'Admin' }
+    { username: 'kaylora', name: 'Kaylora', role: 'Admin', color: 'from-cyan-400 to-blue-500', text: 'Admin' },
+    { username: 'tuymurodov', name: 'Tuymurodov', role: 'Admin', color: 'from-blue-500 to-indigo-500', text: 'Admin', blueBorder: true }
 ];
 
 let currAngle = 0;
@@ -715,6 +716,7 @@ function setupTeamCarousel() {
         const cardClassList = ['carousel-card', 'flex', 'flex-col', 'items-center', 'justify-between', 'p-3.5', 'cursor-pointer', 'select-none'];
         if (admin.owner) cardClassList.push('owner-card');
         if (isJack) cardClassList.push('jack-card');
+        if (admin.blueBorder) cardClassList.push('blue-card');
         card.className = cardClassList.join(' ');
 
         card.setAttribute('data-index', i);
@@ -722,7 +724,7 @@ function setupTeamCarousel() {
         const directAvatarUrl = `https://t.me/i/userpic/320/${admin.username}.jpg`;
         const badgeClass = admin.owner
             ? 'owner-role-badge'
-            : (isJack ? 'jack-role-badge' : 'bg-tggreen-neon/10 text-tggreen-neon border border-tggreen-neon/20');
+            : (isJack ? 'jack-role-badge' : (admin.blueBorder ? 'blue-role-badge' : 'bg-tggreen-neon/10 text-tggreen-neon border border-tggreen-neon/20'));
         const nameClass = 'text-slate-800';
         card.innerHTML = `
             <div class="w-full flex items-center justify-between">
